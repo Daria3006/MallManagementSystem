@@ -3,10 +3,10 @@ package com.example.mallmanagementsystem.model;
 public class MaintenanceTask {
     private String id;
     private String description;
-    private String status;
+    private MaintenanceTaskStatus status;
     private String assignmentId;
 
-    public MaintenanceTask(String id, String description, String status, String assignmentId) {
+    public MaintenanceTask(String id, String description, MaintenanceTaskStatus status, String assignmentId) {
         this.id = id;
         this.description = description;
         this.status = status;
@@ -29,11 +29,11 @@ public class MaintenanceTask {
         this.description = description;
     }
 
-    public String getStatus() {
+    public MaintenanceTaskStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(MaintenanceTaskStatus status) {
         this.status = status;
     }
 
