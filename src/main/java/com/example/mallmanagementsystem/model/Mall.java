@@ -8,11 +8,16 @@ public class Mall {
     private String city;
     private List<Floor> floors;
 
-    public Mall(String id, String name, String city, List<Floor> floors) {
+    private String street;
+    private int number;
+
+    public Mall(String id, String name, String city, List<Floor> floors, String street, int number) {
         this.id = id;
         this.name = name;
         this.city = city;
         this.floors = floors;
+        this.street = street;
+        this.number = number;
     }
 
     public String getId() {
@@ -47,6 +52,22 @@ public class Mall {
         this.floors = floors;
     }
 
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        this.number = number;
+    }
+
     @Override
     public String toString() {
         return "Mall{" +
@@ -54,6 +75,8 @@ public class Mall {
                 ", name='" + name + '\'' +
                 ", city='" + city + '\'' +
                 ", floors=" + floors +
+                ", street='" + street + '\'' +
+                ", number=" + number +
                 '}';
     }
 }

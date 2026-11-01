@@ -6,11 +6,14 @@ public class Purchase {
     private String shopId;
     private double amount;
 
-    public Purchase(String id, String customerId, String shopId, double amount) {
+    private PaymentMethod paymentMethod;
+
+    public Purchase(String id, String customerId, String shopId, double amount, PaymentMethod paymentMethod) {
         this.id = id;
         this.customerId = customerId;
         this.shopId = shopId;
         this.amount = amount;
+        this.paymentMethod = paymentMethod;
     }
 
     public String getId() {
@@ -45,6 +48,14 @@ public class Purchase {
         this.amount = amount;
     }
 
+    public PaymentMethod getPaymentMethod() {
+        return paymentMethod;
+    }
+
+    public void setPaymentMethod(PaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
+    }
+
     @Override
     public String toString() {
         return "Purchase{" +
@@ -52,6 +63,7 @@ public class Purchase {
                 ", customerId='" + customerId + '\'' +
                 ", shopId='" + shopId + '\'' +
                 ", amount=" + amount +
+                ", paymentMethod=" + paymentMethod +
                 '}';
     }
 }

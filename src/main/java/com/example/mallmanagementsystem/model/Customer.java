@@ -8,11 +8,14 @@ public class Customer {
     private String currency;
     private List<Purchase> purchases;
 
-    public Customer(String id, List<Purchase> purchases, String currency, String name) {
+    private String email;
+
+    public Customer(String id, List<Purchase> purchases, String currency, String name, String email) {
         this.id = id;
         this.purchases = purchases;
         this.currency = currency;
         this.name = name;
+        this.email = email;
     }
 
     public String getId() {
@@ -47,6 +50,14 @@ public class Customer {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -54,6 +65,7 @@ public class Customer {
                 ", name='" + name + '\'' +
                 ", currency='" + currency + '\'' +
                 ", purchases=" + purchases +
+                ", email='" + email + '\'' +
                 '}';
     }
 }
