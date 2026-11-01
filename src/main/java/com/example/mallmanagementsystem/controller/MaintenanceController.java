@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/maintenance")
 public class MaintenanceController {
-    private MaintenanceService maintenanceService;
+    private final MaintenanceService maintenanceService;
 
     public MaintenanceController(MaintenanceService maintenanceService) {
         this.maintenanceService = maintenanceService;

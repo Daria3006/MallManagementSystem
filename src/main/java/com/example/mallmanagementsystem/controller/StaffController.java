@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 @RequestMapping("/staff")
 public class StaffController {
-    private StaffService staffService;
+    private final StaffService staffService;
 
     public StaffController(StaffService staffService) {
         this.staffService = staffService;
