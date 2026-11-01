@@ -5,9 +5,9 @@ import com.example.mallmanagementsystem.repository.SecurityStaffRepository;
 import com.example.mallmanagementsystem.repository.StaffAssignmentRepository;
 
 public class StaffService {
-    private SecurityStaffRepository securityStaffRepository;
-    private MaintenanceStaffRepository maintenanceStaffRepository;
-    private StaffAssignmentRepository staffAssignmentRepository;
+    private final SecurityStaffRepository securityStaffRepository;
+    private final MaintenanceStaffRepository maintenanceStaffRepository;
+    private final StaffAssignmentRepository staffAssignmentRepository;
 
     public StaffService(SecurityStaffRepository securityStaffRepository, MaintenanceStaffRepository maintenanceStaffRepository, StaffAssignmentRepository staffAssignmentRepository) {
         this.securityStaffRepository = securityStaffRepository;

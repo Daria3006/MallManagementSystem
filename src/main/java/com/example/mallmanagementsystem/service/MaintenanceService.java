@@ -4,8 +4,8 @@ import com.example.mallmanagementsystem.repository.ElectricalAssetRepository;
 import com.example.mallmanagementsystem.repository.MaintenanceTaskRepository;
 
 public class MaintenanceService {
-    private MaintenanceTaskRepository maintenanceTaskRepository;
-    private ElectricalAssetRepository electricalAssetRepository;
+    private final MaintenanceTaskRepository maintenanceTaskRepository;
+    private final ElectricalAssetRepository electricalAssetRepository;
 
     public MaintenanceService(MaintenanceTaskRepository maintenanceTaskRepository, ElectricalAssetRepository electricalAssetRepository) {
         this.maintenanceTaskRepository = maintenanceTaskRepository;
