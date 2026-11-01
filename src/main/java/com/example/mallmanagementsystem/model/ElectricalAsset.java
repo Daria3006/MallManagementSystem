@@ -3,10 +3,10 @@ package com.example.mallmanagementsystem.model;
 public class ElectricalAsset {
     private String id;
     private String floorId;
-    private String type;
-    private String status;
+    private ElectricalAssetType type;
+    private ElectricalAssetStatus status;
 
-    public ElectricalAsset(String id, String floorId, String type, String status) {
+    public ElectricalAsset(String id, String floorId, ElectricalAssetType type, ElectricalAssetStatus status) {
         this.id = id;
         this.floorId = floorId;
         this.type = type;
@@ -29,19 +29,19 @@ public class ElectricalAsset {
         this.floorId = floorId;
     }
 
-    public String getType() {
+    public ElectricalAssetType getType() {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(ElectricalAssetType type) {
         this.type = type;
     }
 
-    public String getStatus() {
+    public ElectricalAssetStatus getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(ElectricalAssetStatus status) {
         this.status = status;
     }
 

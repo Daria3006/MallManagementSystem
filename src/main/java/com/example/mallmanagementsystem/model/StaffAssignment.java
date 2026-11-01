@@ -4,9 +4,9 @@ public class StaffAssignment {
     private String id;
     private String floorId;
     private String staffId;
-    private String shift;
+    private StaffAssignmentShift shift;
 
-    public StaffAssignment(String id, String floorId, String staffId, String shift) {
+    public StaffAssignment(String id, String floorId, String staffId, StaffAssignmentShift shift) {
         this.id = id;
         this.floorId = floorId;
         this.staffId = staffId;
@@ -37,11 +37,11 @@ public class StaffAssignment {
         this.staffId = staffId;
     }
 
-    public String getShift() {
+    public StaffAssignmentShift getShift() {
         return shift;
     }
 
-    public void setShift(String shift) {
+    public void setShift(StaffAssignmentShift shift) {
         this.shift = shift;
     }
 
