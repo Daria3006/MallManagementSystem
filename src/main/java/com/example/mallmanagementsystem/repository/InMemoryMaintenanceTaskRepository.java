@@ -4,7 +4,7 @@ import com.example.mallmanagementsystem.model.MaintenanceTask;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryMaintenanceTaskRepository extends InMemoryBaseRepository<MaintenanceTask> implements MaintenanceTaskRepository{
+public class InMemoryMaintenanceTaskRepository extends InMemoryBaseRepository<MaintenanceTask>{
 
     @Override
     protected String extractId(MaintenanceTask entity) {

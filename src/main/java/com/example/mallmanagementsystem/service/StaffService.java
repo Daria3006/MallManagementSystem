@@ -1,21 +1,20 @@
 package com.example.mallmanagementsystem.service;
 
 import com.example.mallmanagementsystem.model.*;
-import com.example.mallmanagementsystem.repository.MaintenanceStaffRepository;
-import com.example.mallmanagementsystem.repository.SecurityStaffRepository;
-import com.example.mallmanagementsystem.repository.StaffAssignmentRepository;
-import com.sun.tools.javac.Main;
+import com.example.mallmanagementsystem.repository.InMemoryMaintenanceStaffRepository;
+import com.example.mallmanagementsystem.repository.InMemorySecurityStaffRepository;
+import com.example.mallmanagementsystem.repository.InMemoryStaffAssignmentRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class StaffService {
-    private final SecurityStaffRepository securityStaffRepository;
-    private final MaintenanceStaffRepository maintenanceStaffRepository;
-    private final StaffAssignmentRepository staffAssignmentRepository;
+    private final InMemorySecurityStaffRepository securityStaffRepository;
+    private final InMemoryMaintenanceStaffRepository maintenanceStaffRepository;
+    private final InMemoryStaffAssignmentRepository staffAssignmentRepository;
 
-    public StaffService(SecurityStaffRepository securityStaffRepository, MaintenanceStaffRepository maintenanceStaffRepository, StaffAssignmentRepository staffAssignmentRepository) {
+    public StaffService(InMemorySecurityStaffRepository securityStaffRepository, InMemoryMaintenanceStaffRepository maintenanceStaffRepository, InMemoryStaffAssignmentRepository staffAssignmentRepository) {
         this.securityStaffRepository = securityStaffRepository;
         this.maintenanceStaffRepository = maintenanceStaffRepository;
         this.staffAssignmentRepository = staffAssignmentRepository;
