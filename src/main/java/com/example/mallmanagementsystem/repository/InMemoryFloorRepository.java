@@ -4,7 +4,7 @@ import com.example.mallmanagementsystem.model.Floor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryFloorRepository extends InMemoryBaseRepository<Floor> implements FloorRepository{
+public class InMemoryFloorRepository extends InMemoryBaseRepository<Floor>{
 
     @Override
     protected String extractId(Floor floor) {

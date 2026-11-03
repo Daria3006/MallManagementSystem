@@ -3,20 +3,18 @@ package com.example.mallmanagementsystem.service;
 import com.example.mallmanagementsystem.model.Customer;
 import com.example.mallmanagementsystem.model.Purchase;
 import com.example.mallmanagementsystem.model.Shop;
-import com.example.mallmanagementsystem.repository.CustomerRepository;
-import com.example.mallmanagementsystem.repository.PurchaseRepository;
-import com.example.mallmanagementsystem.repository.ShopRepository;
+import com.example.mallmanagementsystem.repository.*;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SalesService {
-    private final ShopRepository shopRepository;
-    private final PurchaseRepository purchaseRepository;
-    private final CustomerRepository customerRepository;
+    private final InMemoryShopRepository shopRepository;
+    private final InMemoryPurchaseRepository purchaseRepository;
+    private final InMemoryCustomerRepository customerRepository;
 
-    public SalesService(ShopRepository shopRepository, PurchaseRepository purchaseRepository, CustomerRepository customerRepository) {
+    public SalesService(InMemoryShopRepository shopRepository, InMemoryPurchaseRepository purchaseRepository, InMemoryCustomerRepository customerRepository) {
         this.shopRepository = shopRepository;
         this.purchaseRepository = purchaseRepository;
         this.customerRepository = customerRepository;

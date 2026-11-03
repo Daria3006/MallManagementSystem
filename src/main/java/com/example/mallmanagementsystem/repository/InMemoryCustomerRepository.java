@@ -4,7 +4,7 @@ import com.example.mallmanagementsystem.model.Customer;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class InMemoryCustomerRepository extends InMemoryBaseRepository<Customer> implements CustomerRepository {
+public class InMemoryCustomerRepository extends InMemoryBaseRepository<Customer>{
 
     @Override
     protected String extractId(Customer customer) {
