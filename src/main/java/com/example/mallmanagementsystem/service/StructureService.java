@@ -2,18 +2,18 @@ package com.example.mallmanagementsystem.service;
 
 import com.example.mallmanagementsystem.model.Floor;
 import com.example.mallmanagementsystem.model.Mall;
-import com.example.mallmanagementsystem.repository.FloorRepository;
-import com.example.mallmanagementsystem.repository.MallRepository;
+import com.example.mallmanagementsystem.repository.InMemoryFloorRepository;
+import com.example.mallmanagementsystem.repository.InMemoryMallRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class StructureService {
-    private final MallRepository mallRepository;
-    private final FloorRepository floorRepository;
+    private final InMemoryMallRepository mallRepository;
+    private final InMemoryFloorRepository floorRepository;
 
-    public StructureService(MallRepository mallRepository, FloorRepository floorRepository) {
+    public StructureService(InMemoryMallRepository mallRepository, InMemoryFloorRepository floorRepository) {
         this.mallRepository = mallRepository;
         this.floorRepository = floorRepository;
     }
