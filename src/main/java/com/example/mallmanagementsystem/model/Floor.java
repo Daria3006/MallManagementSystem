@@ -5,10 +5,10 @@ import java.util.List;
 public class Floor {
     private String id;
     private int number;
-    List<Shop> shops;
-    List<MaintenanceTask> tasks;
-    List<ElectricalAsset> electricals;
-    List<StaffAssignment> assignments;
+    private List<Shop> shops;
+    private List<MaintenanceTask> tasks;
+    private List<ElectricalAsset> electricals;
+    private List<StaffAssignment> assignments;
 
     public Floor(String id, int number, List<Shop> shops, List<MaintenanceTask> tasks, List<ElectricalAsset> electricals, List<StaffAssignment> assignments) {
         this.id = id;
