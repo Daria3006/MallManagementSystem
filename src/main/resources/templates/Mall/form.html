@@ -1,10 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create New Mall</title>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="number"] { width: 300px; padding: 5px; }
+    </style>
 </head>
 <body>
+<h1>Create New Mall</h1>
 
+<form th:action="@{/malls}" th:object="${mall}" method="post">
+
+    <div class="form-group">
+        <label for="id">Mall ID:</label>
+        <input type="text" id="id" th:field="*{id}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" th:field="*{name}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="city">City:</label>
+        <input type="text" id="city" th:field="*{city}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="street">Street:</label>
+        <input type="text" id="street" th:field="*{street}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="number">Number:</label>
+        <input type="number" id="number" th:field="*{number}" required />
+    </div>
+
+    <button type="submit">Save Mall</button>
+    <a th:href="@{/malls}">Cancel</a>
+</form>
 </body>
 </html>
