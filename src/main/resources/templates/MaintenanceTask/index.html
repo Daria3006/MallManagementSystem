@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>MaintenanceTask List</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .actions { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+<h1>MaintenanceTasks</h1>
+
+<a th:href="@{/maintenance/MaintenanceTask/new}">
+    <button>Create New MaintenanceTask</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Description</th>
+        <th>Status</th>
+        <th>AssignmentID</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="maintenanceTask : ${maintenanceTasks}">
+        <td th:text="${maintenanceTask.id}">ID</td>
+        <td th:text="${maintenanceTask.description}">Description</td>
+        <td th:text="${maintenanceTask.status}">Status</td>
+        <td th:text="${maintenanceTask.assignmentId}">AssignmentID</td>
+        <td>
+            <form th:action="@{'/maintenance/MaintenanceTask/' + ${maintenanceTask.id} + '/delete'}" method="post" style="margin: 0;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(maintenanceTasks)}">
+        <td colspan="6" style="text-align: center;">No MaintenanceTasks found.</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

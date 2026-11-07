@@ -1,16 +1,19 @@
 package com.example.mallmanagementsystem.controller;
 
 import com.example.mallmanagementsystem.model.MaintenanceTask;
+import com.example.mallmanagementsystem.model.MaintenanceTaskStatus;
+import com.example.mallmanagementsystem.model.Mall;
 import com.example.mallmanagementsystem.service.MaintenanceService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.service.annotation.GetExchange;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+
+import java.util.ArrayList;
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/maintenance")
 public class MaintenanceController {
     private final MaintenanceService maintenanceService;
@@ -19,17 +22,28 @@ public class MaintenanceController {
         this.maintenanceService = maintenanceService;
     }
 
-    @GetMapping("GET/MaintenanceTask")
-    public List<MaintenanceTask> getMaintenanceTask(){
-        return this.maintenanceService.findAllMaintenanceTask();
+    @GetMapping("/MaintenanceTask")
+    public String getMaintenanceTask(Model model) {
+        List<MaintenanceTask> maintenanceTasks = this.maintenanceService.findAllMaintenanceTask();
+        model.addAttribute("maintenanceTasks", maintenanceTasks);
+        return "MaintenanceTask/index";
     }
 
-    @GetMapping("GET/MaintenanceTask/new")
-    public void newMaintenanceTask(){}
+    @GetMapping("/MaintenanceTask/new")
+    public String newMaintenanceTask(Model model){
+        model.addAttribute("maintenanceTask", new MaintenanceTask("", "", MaintenanceTaskStatus.ACTIVE, ""));
+        return "MaintenanceTask/form";
+    }
 
-    @GetMapping("POST/MaintenanceTask")
-    public void postMaintenanceTask(){}
+    @PostMapping("/MaintenanceTask")
+    public String createMaintenanceTask(@ModelAttribute MaintenanceTask maintenanceTask){
+        maintenanceService.saveMaintenanceTask(maintenanceTask);
+        return "redirect:/maintenance/MaintenanceTask";
+    }
 
-    @GetMapping("POST/MaintenanceTask/{id}/delete")
-    public void deleteMaintenanceTask(@PathVariable String id){}
+    @PostMapping("/MaintenanceTask/{id}/delete")
+    public String deleteMaintenanceTask(@PathVariable String id){
+        maintenanceService.deleteMaintenanceTask(id);
+        return "redirect:/maintenance/MaintenanceTask";
+    }
 }
