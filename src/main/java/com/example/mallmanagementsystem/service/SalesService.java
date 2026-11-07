@@ -45,7 +45,19 @@ public class SalesService {
     }
 
     public Purchase savePurchase(Purchase purchase){
-        return purchaseRepository.save(purchase);
+        Purchase saved = purchaseRepository.save(purchase);
+
+        Customer customer = customerRepository.findById(purchase.getCustomerId());
+        if (customer != null) {
+            customer.getPurchases().add(saved);
+        }
+
+        Shop shop = shopRepository.findById(purchase.getShopId());
+        if (shop != null) {
+            shop.getPurchases().add(saved);
+        }
+
+        return saved;
     }
 
     public List<Purchase> findAllPurchases(){
@@ -65,6 +77,17 @@ public class SalesService {
         if (purchase == null) {
             throw new RuntimeException("Cannot delete: Purchase with ID " + id + " not found.");
         }
+
+        Customer customer = customerRepository.findById(purchase.getCustomerId());
+        if (customer != null && customer.getPurchases() != null) {
+            customer.getPurchases().removeIf(p -> p.getId().equals(id));
+        }
+
+        Shop shop = shopRepository.findById(purchase.getShopId());
+        if (shop != null && shop.getPurchases() != null) {
+            shop.getPurchases().removeIf(p -> p.getId().equals(id));
+        }
+
         purchaseRepository.delete(id);
     }
 
