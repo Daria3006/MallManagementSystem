@@ -18,7 +18,7 @@ public abstract class InMemoryBaseRepository<T> implements BaseRepository<T> {
 
     @Override
     public List<T> findAll() {
-        return storage;
+        return new ArrayList<>(storage);
     }
 
     @Override
