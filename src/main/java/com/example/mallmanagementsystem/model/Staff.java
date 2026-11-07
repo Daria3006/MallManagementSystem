@@ -1,8 +1,8 @@
 package com.example.mallmanagementsystem.model;
 
 public abstract class Staff {
-    protected String id;
-    protected String name;
+    private String id;
+    private String name;
 
     public Staff(String id, String name) {
         this.id = id;

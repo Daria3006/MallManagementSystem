@@ -10,6 +10,8 @@ public abstract class InMemoryBaseRepository<T> implements BaseRepository<T> {
 
     @Override
     public T save(T entity) {
+        String id = extractId(entity);
+        storage.removeIf(item -> Objects.equals(extractId(item), id));
         storage.add(entity);
         return entity;
     }

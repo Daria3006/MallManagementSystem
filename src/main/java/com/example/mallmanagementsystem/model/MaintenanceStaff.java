@@ -33,8 +33,8 @@ public class MaintenanceStaff extends Staff{
         return "MaintenanceStaff{" +
                 "assignments=" + assignments +
                 ", type='" + type + '\'' +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                ", id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
                 '}';
     }
 }

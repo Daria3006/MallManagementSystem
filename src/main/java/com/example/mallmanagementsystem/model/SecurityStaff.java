@@ -1,27 +1,27 @@
 package com.example.mallmanagementsystem.model;
 
 public class SecurityStaff extends Staff{
-    private String BadgeNo;
+    private String badgeNo;
 
     public SecurityStaff(String id, String name, String badgeNo) {
         super(id, name);
-        BadgeNo = badgeNo;
+        this.badgeNo = badgeNo;
     }
 
     public String getBadgeNo() {
-        return BadgeNo;
+        return badgeNo;
     }
 
     public void setBadgeNo(String badgeNo) {
-        BadgeNo = badgeNo;
+        this.badgeNo = badgeNo;
     }
 
     @Override
     public String toString() {
         return "SecurityStaff{" +
-                "BadgeNo='" + BadgeNo + '\'' +
-                ", id='" + id + '\'' +
-                ", name='" + name + '\'' +
+                "BadgeNo='" + badgeNo + '\'' +
+                ", id='" + getId() + '\'' +
+                ", name='" + getName() + '\'' +
                 '}';
     }
 }
