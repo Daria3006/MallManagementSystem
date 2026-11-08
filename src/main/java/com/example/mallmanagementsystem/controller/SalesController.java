@@ -19,7 +19,7 @@ public class SalesController {
     }
 
     @GetMapping("/shops")
-    public String shops(Model model) {
+    public String getAllShops(Model model) {
         List<Shop> shops=this.salesService.findAllShops();
         model.addAttribute("shops",shops);
         return "Shop/index";

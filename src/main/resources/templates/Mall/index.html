@@ -13,7 +13,7 @@
 <body>
 <h1>Malls</h1>
 
-<a th:href="@{/malls/new}">
+<a th:href="@{/structure/malls/new}">
     <button>Create New Mall</button>
 </a>
 
@@ -36,8 +36,7 @@
         <td th:text="${mall.street}">Street</td>
         <td th:text="${mall.number}">Number</td>
         <td>
-            <!-- Delete button as a POST form to avoid GET state changes -->
-            <form th:action="@{'/malls/' + ${mall.id} + '/delete'}" method="post" style="margin: 0;">
+            <form th:action="@{'/structure/malls/' + ${mall.id} + '/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
             </form>
         </td>
