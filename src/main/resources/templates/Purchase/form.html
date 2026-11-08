@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Create New Purchase</title>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="number"] { width: 300px; padding: 5px; }
+    </style>
 </head>
 <body>
+<h1>Create New Purchase</h1>
 
+<form th:action="@{/sales/purchases}" th:object="${purchase}" method="post">
+    <div class="form-group">
+        <label for="id">Purchase ID:</label>
+        <input type="text" id="id" name="id" th:field="*{id}" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="customerId">Customer ID:</label>
+        <input type="text" id="customerId" th:field="*{customerId}" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="shopId">Shop ID:</label>
+        <input type="text" id="shopId" th:field="*{shopId}" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="amount">Amount</label>
+        <input type="number" id="amount" th:field="*{amount}" step="any" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="paymentMethod">Payment Method:</label>
+        <select id="paymentMethod" th:field="*{paymentMethod}" required>
+            <option value="CASH">CASH</option>
+            <option value="CARD">CARD</option>
+            <option value="COUPON">COUPON</option>
+        </select>
+    </div>
+
+    <button type="submit">Submit</button>
+    <a th:href="@{/sales/purchases}">Cancel</a>
+</form>
 </body>
 </html>

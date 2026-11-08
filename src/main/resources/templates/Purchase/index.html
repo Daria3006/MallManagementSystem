@@ -1,10 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Purchases</title>
+    <style>
+        table{width: 100%; border-collapse: collapse; margin-top: 20px;}
+        th,td{border:1px solid #ddd;padding: 8px;text-align: left;}
+        th{background-color: #f2f2f2;}
+        .actions{display: flex;gap: 10px}
+    </style>
 </head>
 <body>
-
+<h1>Purchase</h1>
+<a th:href="@{/sales/purchases/new}">
+    <button>Create new Purchase</button>
+</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>CustomerID</th>
+        <th>ShopID</th>
+        <th>Amount</th>
+        <th>Payment Method</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="purchase : ${purchases}">
+    <td th:text="${purchase.id}">ID</td>
+    <td th:text="${purchase.customerId}">CustomerID</td>
+    <td th:text="${purchase.shopId}">ShopID</td>
+    <td th:text="${purchase.amount}">Amount</td>
+    <td th:text="${purchase.paymentMethod}">Payment Method</td>
+    <td>
+        <form th:action="@{'/sales/purchases/'+${purchase.id}+'/delete'}" method="post" style="margin: 0;">
+            <button type="submit">Delete</button>
+        </form>
+    </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(purchases)}">
+        <td colspan="6">No Purchases found.</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

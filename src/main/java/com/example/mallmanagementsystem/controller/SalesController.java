@@ -1,5 +1,7 @@
 package com.example.mallmanagementsystem.controller;
 
+import com.example.mallmanagementsystem.model.PaymentMethod;
+import com.example.mallmanagementsystem.model.Purchase;
 import com.example.mallmanagementsystem.model.Shop;
 import com.example.mallmanagementsystem.service.SalesService;
 import org.springframework.stereotype.Controller;
@@ -43,4 +45,27 @@ public class SalesController {
         return "redirect:/sales/shops";
     }
 
+    @GetMapping("/purchases")
+    public String getAllPurchases(Model model){
+        model.addAttribute("purchases",this.salesService.findAllPurchases());
+        return "Purchase/index";
+    }
+
+    @GetMapping("/purchases/new")
+    public String newPurchase(Model model){
+        model.addAttribute("purchase",new Purchase("","","",0, PaymentMethod.CASH));
+        return "Purchase/form";
+    }
+
+    @PostMapping("/purchases")
+    public String createPurchase(@ModelAttribute Purchase purchase) {
+        salesService.savePurchase(purchase);
+        return "redirect:/sales/purchases";
+    }
+
+    @PostMapping("/purchases/{id}/delete")
+    public String deletePurchase(@PathVariable String id) {
+        salesService.deletePurchase(id);
+        return "redirect:/sales/purchases";
+    }
 }
