@@ -1,5 +1,6 @@
 package com.example.mallmanagementsystem.controller;
 
+import com.example.mallmanagementsystem.model.Floor;
 import com.example.mallmanagementsystem.model.Mall;
 import com.example.mallmanagementsystem.service.StructureService;
 import org.springframework.stereotype.Controller;
@@ -39,5 +40,29 @@ public class StructureController {
     public String deleteMall(@PathVariable String id) {
         structureService.deleteMall(id);
         return "redirect:/structure/malls";
+    }
+
+    @GetMapping("/floors")
+    public String getAllFloors(Model model) {
+        model.addAttribute("floors", structureService.getAllFloors());
+        return "Floor/index";
+    }
+
+    @GetMapping("/floors/new")
+    public String newFloor(Model model) {
+        model.addAttribute("floor", new Floor("", 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+        return "Floor/form";
+    }
+
+    @PostMapping("/floors")
+    public String createFloor(@ModelAttribute Floor floor) {
+        structureService.saveFloor(floor);
+        return "redirect:/structure/floors";
+    }
+
+    @PostMapping("/floors/{id}/delete")
+    public String deleteFloor(@PathVariable String id) {
+        structureService.deleteFloor(id);
+        return "redirect:/structure/floors";
     }
 }
