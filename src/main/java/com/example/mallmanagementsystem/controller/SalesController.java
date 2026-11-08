@@ -1,5 +1,6 @@
 package com.example.mallmanagementsystem.controller;
 
+import com.example.mallmanagementsystem.model.Customer;
 import com.example.mallmanagementsystem.model.PaymentMethod;
 import com.example.mallmanagementsystem.model.Purchase;
 import com.example.mallmanagementsystem.model.Shop;
@@ -67,5 +68,29 @@ public class SalesController {
     public String deletePurchase(@PathVariable String id) {
         salesService.deletePurchase(id);
         return "redirect:/sales/purchases";
+    }
+
+    @GetMapping("/customers")
+    public String getAllCustomers(Model model){
+        model.addAttribute("customers",this.salesService.findAllCustomers());
+        return "Customer/index";
+    }
+
+    @GetMapping("/customers/new")
+    public String newCustomer(Model model){
+        model.addAttribute("customer",new Customer("",new ArrayList<>(),"","",""));
+        return "Customer/form";
+    }
+
+    @PostMapping("/customers")
+    public String createCustomer(@ModelAttribute Customer customer) {
+        salesService.saveCustomer(customer);
+        return "redirect:/sales/customers";
+    }
+
+    @PostMapping("/customers/{id}/delete")
+    public String deleteCustomer(@PathVariable String id) {
+        salesService.deleteCustomer(id);
+        return "redirect:/sales/customers";
     }
 }
