@@ -1,10 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta charset="utf-8">
+    <title>Shop List</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .actions {
+            display: flex;
+            gap: 10px
+        }
+    </style>
 </head>
 <body>
+<h1>Shops</h1>
 
+<a th:href="@{/sales/shops/new}">
+    <button>Create New Shop</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Owner Name</th>
+        <th>Area</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="shop : ${shops}">
+        <td th:text="${shop.id}">ID</td>
+        <td th:text="${shop.name}">Name</td>
+        <td th:text="${shop.ownerName}">Owner Name</td>
+        <td th:text="${shop.areaSqm}">Area</td>
+        <td>
+            <form th:action="@{'/sales/shops/'+${shop.id}+'/delete'}" method="post" style="margin: 0;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(shops)}">
+        <td colspan="5" style="text-align: center;">No shops found.</td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
