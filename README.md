@@ -34,5 +34,4 @@ Using `POST` mapping, the safe deletion of data is done, and additionally, form 
    - **Security Staff**: `http://localhost:8080/staff/securityStaff`
    - **Maintenance Staff**: `http://localhost:8080/staff/maintenanceStaff`
    - **Staff Assignment**: `http://localhost:8080/staff/staffAssignments`
-   - 
 6. Use the "Create" buttons to add data and the "Delete" buttons to remove it.
