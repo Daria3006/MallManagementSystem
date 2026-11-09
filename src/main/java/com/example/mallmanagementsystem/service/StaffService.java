@@ -99,4 +99,10 @@ public class StaffService {
         MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
         maintenanceStaff.addAssignment(staffAssignment);
     }
+
+    public void deleteStaffAssignmentFromMaintenanceStaff(StaffAssignment staffAssignment) {
+        String staffId = staffAssignment.getStaffId();
+        MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
+        maintenanceStaff.deleteAssignment(staffAssignment);
+    }
 }
