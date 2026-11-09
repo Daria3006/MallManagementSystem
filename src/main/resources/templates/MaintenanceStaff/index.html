@@ -29,7 +29,7 @@
     <tbody>
     <tr th:each="maintenanceStaff : ${maintenanceStaff}">
         <td th:text="${maintenanceStaff.id}">ID</td>
-        <td th:text="${maintenanceStaff.name}">FloorID</td>
+        <td th:text="${maintenanceStaff.name}">Name</td>
         <td th:text="${maintenanceStaff.type}">Type</td>
         <td>
             <form th:action="@{'/staff/maintenanceStaff/' + ${maintenanceStaff.id} + '/delete'}" method="post" style="margin: 0;">

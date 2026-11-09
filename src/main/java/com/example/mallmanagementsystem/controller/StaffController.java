@@ -85,6 +85,7 @@ public class StaffController {
     @PostMapping("/staffAssignments")
     public String createStaffAssignment(@ModelAttribute StaffAssignment staffAssignment) {
         staffService.saveStaffAssignment(staffAssignment);
+        staffService.addStaffAssignmentToMaintenanceStaff(staffAssignment);
         return "redirect:/staff/staffAssignments";
     }
 
