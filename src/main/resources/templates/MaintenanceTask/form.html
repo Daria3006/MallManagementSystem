@@ -12,7 +12,7 @@
 <body>
 <h1>Create New MaintenanceTask</h1>
 
-<form th:action="@{/maintenance/maintenanceTask}" th:object="${maintenanceTask}" method="post">
+<form th:action="@{/maintenance/maintenanceTasks}" th:object="${maintenanceTask}" method="post">
 
     <div class="form-group">
         <label for="id">MaintenanceTask ID:</label>
@@ -39,7 +39,7 @@
     </div>
 
     <button type="submit">Save MaintenanceTasks</button>
-    <a th:href="@{/maintenance/maintenanceTask}">Cancel</a>
+    <a th:href="@{/maintenance/maintenanceTasks}">Cancel</a>
 </form>
 </body>
 </html>
