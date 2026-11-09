@@ -92,4 +92,11 @@ public class StaffService {
         }
         staffAssignmentRepository.delete(id);
     }
+
+
+    public void addStaffAssignmentToMaintenanceStaff(StaffAssignment staffAssignment) {
+        String staffId = staffAssignment.getStaffId();
+        MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
+        maintenanceStaff.addAssignment(staffAssignment);
+    }
 }

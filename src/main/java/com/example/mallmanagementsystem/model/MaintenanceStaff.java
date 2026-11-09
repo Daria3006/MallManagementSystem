@@ -20,6 +20,14 @@ public class MaintenanceStaff extends Staff{
         this.assignments = assignments;
     }
 
+    public void addAssignment(StaffAssignment staffAssignment) {
+        this.assignments.add(staffAssignment);
+    }
+
+    public void deleteAssignment(StaffAssignment staffAssignment) {
+        this.assignments.remove(staffAssignment);
+    }
+
     public MaintenanceStaffType getType() {
         return type;
     }
