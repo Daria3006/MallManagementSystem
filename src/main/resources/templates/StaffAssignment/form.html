@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New StaffAssignment</title>
+    <style>
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="number"] { width: 300px; padding: 5px; }
+    </style>
+</head>
+<body>
+<h1>Create New StaffAssignment</h1>
+
+<form th:action="@{/staff/staffAssignments}" th:object="${staffAssignment}" method="post">
+
+    <div class="form-group">
+        <label for="id">StaffAssignment ID:</label>
+        <input type="text" id="id" th:field="*{id}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="floorId">Floor ID:</label>
+        <input type="text" id="floorId" th:field="*{floorId}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="staffId">Staff ID:</label>
+        <input type="text" id="staffId" th:field="*{staffId}" required />
+    </div>
+
+    <div class="form-group">
+        <label for="shift">Shift:</label>
+        <select id="shift" th:field="*{shift}" required>
+            <option value="MORNING">MORNING</option>
+            <option value="EVENING">EVENING</option>
+            <option value="NIGHT">NIGHT</option>
+        </select>
+    </div>
+
+    <button type="submit">Save StaffAssignment</button>
+    <a th:href="@{/staff/staffAssignments}">Cancel</a>
+</form>
+</body>
+</html>

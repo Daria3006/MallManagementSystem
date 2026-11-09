@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>StaffAssignment List</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .actions { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+<h1>StaffAssignments</h1>
+
+<a th:href="@{/staff/staffAssignments/new}">
+    <button>Create New StaffAssignment</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Floor ID</th>
+        <th>Staff ID</th>
+        <th>Shift</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="staffAssignment : ${staffAssignments}">
+        <td th:text="${staffAssignment.id}">ID</td>
+        <td th:text="${staffAssignment.floorId}">Floor ID</td>
+        <td th:text="${staffAssignment.staffId}">Staff ID</td>
+        <td th:text="${staffAssignment.shift}">Shift</td>
+        <td>
+            <form th:action="@{'/staff/staffAssignments/' + ${staffAssignment.id} + '/delete'}" method="post" style="margin: 0;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(staffAssignments)}">
+        <td colspan="6" style="text-align: center;">No StaffAssignments found.</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

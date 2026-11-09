@@ -1,11 +1,8 @@
 package com.example.mallmanagementsystem.controller;
 
 
-import com.example.mallmanagementsystem.model.MaintenanceStaff;
-import com.example.mallmanagementsystem.model.MaintenanceStaffType;
-import com.example.mallmanagementsystem.model.SecurityStaff;
+import com.example.mallmanagementsystem.model.*;
 import com.example.mallmanagementsystem.service.StaffService;
-import com.sun.tools.javac.Main;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -70,5 +67,30 @@ public class StaffController {
     public String deleteMaintenanceStaff(@PathVariable String id){
         staffService.deleteMaintenanceStaff(id);
         return "redirect:/staff/maintenanceStaff";
+    }
+
+    @GetMapping("/staffAssignments")
+    public String getAllStaffAssignments(Model model) {
+        List<StaffAssignment> staffAssignments = this.staffService.findAllStaffAssignment();
+        model.addAttribute("staffAssignments", staffAssignments);
+        return "staffAssignment/index";
+    }
+
+    @GetMapping("/staffAssignments/new")
+    public String newStaffAssignment(Model model){
+        model.addAttribute("staffAssignment", new StaffAssignment("", "", "", StaffAssignmentShift.MORNING));
+        return "staffAssignment/form";
+    }
+
+    @PostMapping("/staffAssignments")
+    public String createStaffAssignment(@ModelAttribute StaffAssignment staffAssignment) {
+        staffService.saveStaffAssignment(staffAssignment);
+        return "redirect:/staff/staffAssignments";
+    }
+
+    @PostMapping("/staffAssignments/{id}/delete")
+    public String deleteStaffAssignment(@PathVariable String id){
+        staffService.deleteStaffAssignment(id);
+        return "redirect:/staff/staffAssignments";
     }
 }
