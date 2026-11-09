@@ -85,14 +85,12 @@ public class StaffController {
     @PostMapping("/staffAssignments")
     public String createStaffAssignment(@ModelAttribute StaffAssignment staffAssignment) {
         staffService.saveStaffAssignment(staffAssignment);
-//        staffService.addStaffAssignmentToMaintenanceStaff(staffAssignment);
         return "redirect:/staff/staffAssignments";
     }
 
     @PostMapping("/staffAssignments/{id}/delete")
     public String deleteStaffAssignment(@PathVariable String id){
         staffService.deleteStaffAssignment(id);
-//        staffService.deleteStaffAssignmentFromMaintenanceStaff(staffService.findStaffAssignmentById(id));
         return "redirect:/staff/staffAssignments";
     }
 }
