@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SecurityStaff List</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .actions { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+<h1>SecurityStaff</h1>
+
+<a th:href="@{/staff/securityStaff/new}">
+    <button>Create New SecurityStaff</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>BadgeNo</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="securityStaff : ${securityStaff}">
+        <td th:text="${securityStaff.id}">ID</td>
+        <td th:text="${securityStaff.name}">Name</td>
+        <td th:text="${securityStaff.badgeNo}">BadgeNo</td>
+        <td>
+            <form th:action="@{'/staff/securityStaff/' + ${securityStaff.id} + '/delete'}" method="post" style="margin: 0;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(securityStaff)}">
+        <td colspan="6" style="text-align: center;">No SecurityStaff found.</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -20,11 +20,11 @@ public class StaffService {
         this.staffAssignmentRepository = staffAssignmentRepository;
     }
 
-    public SecurityStaff securityStaff(SecurityStaff securityStaff) {
+    public SecurityStaff saveSecurityStaff(SecurityStaff securityStaff) {
         return securityStaffRepository.save(securityStaff);
     }
 
-    public List<SecurityStaff> securityStaff() {
+    public List<SecurityStaff> findAllSecurityStaff() {
         return securityStaffRepository.findAll();
     }
 
