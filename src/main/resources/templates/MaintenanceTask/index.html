@@ -13,7 +13,7 @@
 <body>
 <h1>MaintenanceTasks</h1>
 
-<a th:href="@{/maintenance/MaintenanceTask/new}">
+<a th:href="@{/maintenance/maintenanceTask/new}">
     <button>Create New MaintenanceTask</button>
 </a>
 
@@ -33,7 +33,7 @@
         <td th:text="${maintenanceTask.status}">Status</td>
         <td th:text="${maintenanceTask.assignmentId}">AssignmentID</td>
         <td>
-            <form th:action="@{'/maintenance/MaintenanceTask/' + ${maintenanceTask.id} + '/delete'}" method="post" style="margin: 0;">
+            <form th:action="@{'/maintenance/maintenanceTask/' + ${maintenanceTask.id} + '/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
             </form>
         </td>

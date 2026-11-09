@@ -1,8 +1,6 @@
 package com.example.mallmanagementsystem.controller;
 
-import com.example.mallmanagementsystem.model.MaintenanceTask;
-import com.example.mallmanagementsystem.model.MaintenanceTaskStatus;
-import com.example.mallmanagementsystem.model.Mall;
+import com.example.mallmanagementsystem.model.*;
 import com.example.mallmanagementsystem.service.MaintenanceService;
 
 import org.springframework.stereotype.Controller;
@@ -22,28 +20,53 @@ public class MaintenanceController {
         this.maintenanceService = maintenanceService;
     }
 
-    @GetMapping("/MaintenanceTask")
-    public String getMaintenanceTask(Model model) {
+    @GetMapping("/maintenanceTasks")
+    public String getAllMaintenanceTasks(Model model) {
         List<MaintenanceTask> maintenanceTasks = this.maintenanceService.findAllMaintenanceTask();
         model.addAttribute("maintenanceTasks", maintenanceTasks);
-        return "MaintenanceTask/index";
+        return "maintenanceTask/index";
     }
 
-    @GetMapping("/MaintenanceTask/new")
+    @GetMapping("/maintenanceTasks/new")
     public String newMaintenanceTask(Model model){
         model.addAttribute("maintenanceTask", new MaintenanceTask("", "", MaintenanceTaskStatus.ACTIVE, ""));
-        return "MaintenanceTask/form";
+        return "maintenanceTask/form";
     }
 
-    @PostMapping("/MaintenanceTask")
+    @PostMapping("/maintenanceTasks")
     public String createMaintenanceTask(@ModelAttribute MaintenanceTask maintenanceTask){
         maintenanceService.saveMaintenanceTask(maintenanceTask);
-        return "redirect:/maintenance/MaintenanceTask";
+        return "redirect:/maintenance/maintenanceTasks";
     }
 
-    @PostMapping("/MaintenanceTask/{id}/delete")
+    @PostMapping("/maintenanceTasks/{id}/delete")
     public String deleteMaintenanceTask(@PathVariable String id){
         maintenanceService.deleteMaintenanceTask(id);
-        return "redirect:/maintenance/MaintenanceTask";
+        return "redirect:/maintenance/maintenanceTasks";
+    }
+
+    @GetMapping("/electricalAssets")
+    public String getAllElectricalAssets(Model model) {
+        List<ElectricalAsset> electricalAssets = this.maintenanceService.findAllElectricalAsset();
+        model.addAttribute("electricalAssets", electricalAssets);
+        return "electricalAsset/index";
+    }
+
+    @GetMapping("/electricalAssets/new")
+    public String newElectricalAsset(Model model){
+        model.addAttribute("electricalAsset", new ElectricalAsset("", "", ElectricalAssetType.LIFT, ElectricalAssetStatus.WORKING));
+        return "electricalAsset/form";
+    }
+
+    @PostMapping("/electricalAssets")
+    public String createElectricalAsset(@ModelAttribute ElectricalAsset electricalAsset){
+        maintenanceService.saveElectricalAsset(electricalAsset);
+        return "redirect:/maintenance/electricalAssets";
+    }
+
+    @PostMapping("/electricalAssets/{id}/delete")
+    public String deleteElectricalAsset(@PathVariable String id){
+        maintenanceService.deleteElectricalAsset(id);
+        return "redirect:/maintenance/electricalAssets";
     }
 }

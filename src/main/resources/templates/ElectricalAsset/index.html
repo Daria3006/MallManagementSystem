@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ElectricalAsset List</title>
+    <style>
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+        .actions { display: flex; gap: 10px; }
+    </style>
+</head>
+<body>
+<h1>ElectricalAssets</h1>
+
+<a th:href="@{/maintenance/electricalAssets/new}">
+    <button>Create New ElectricalAsset</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>FloorID</th>
+        <th>Type</th>
+        <th>Status</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="electricalAsset : ${electricalAssets}">
+        <td th:text="${electricalAsset.id}">ID</td>
+        <td th:text="${electricalAsset.floorId}">FloorID</td>
+        <td th:text="${electricalAsset.type}">Type</td>
+        <td th:text="${electricalAsset.status}">Status</td>
+        <td>
+            <form th:action="@{'/maintenance/electricalAssets/' + ${electricalAsset.id} + '/delete'}" method="post" style="margin: 0;">
+                <button type="submit">Delete</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(electricalAssets)}">
+        <td colspan="6" style="text-align: center;">No ElectricalAssets found.</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -12,11 +12,11 @@
 <body>
 <h1>Create New MaintenanceTask</h1>
 
-<form th:action="@{/maintenance/MaintenanceTask}" th:object="${maintenanceTask}" method="post">
+<form th:action="@{/maintenance/maintenanceTask}" th:object="${maintenanceTask}" method="post">
 
     <div class="form-group">
         <label for="id">MaintenanceTask ID:</label>
-        <input type="number" id="id" th:field="*{id}" required />
+        <input type="text" id="id" th:field="*{id}" required />
     </div>
 
     <div class="form-group">
@@ -35,11 +35,11 @@
 
     <div class="form-group">
         <label for="assignmentId">AssignmentId:</label>
-        <input type="number" id="assignmentId" th:field="*{assignmentId}" required />
+        <input type="text" id="assignmentId" th:field="*{assignmentId}" required />
     </div>
 
     <button type="submit">Save MaintenanceTasks</button>
-    <a th:href="@{/maintenance/MaintenanceTask}">Cancel</a>
+    <a th:href="@{/maintenance/maintenanceTask}">Cancel</a>
 </form>
 </body>
 </html>
