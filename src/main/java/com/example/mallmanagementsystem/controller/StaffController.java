@@ -92,6 +92,7 @@ public class StaffController {
     @PostMapping("/staffAssignments/{id}/delete")
     public String deleteStaffAssignment(@PathVariable String id){
         staffService.deleteStaffAssignment(id);
+        staffService.deleteStaffAssignmentFromMaintenanceStaff(staffService.findStaffAssignmentById(id));
         return "redirect:/staff/staffAssignments";
     }
 }
