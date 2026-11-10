@@ -7,4 +7,7 @@ public interface BaseRepository<T> {
     List<T> findAll();
     T findById(String id);
     void delete (String id);
+
+    String getNewId();
+    List<String> getAllIds();
 }
