@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -29,7 +28,11 @@ public class MaintenanceController {
 
     @GetMapping("/maintenanceTasks/new")
     public String newMaintenanceTask(Model model){
+        String newId = maintenanceService.getMaintenanceTaskNewId();
+        List<String> maintenanceTaskIds = this.maintenanceService.getMaintenanceTaskAllIds();
+        maintenanceTaskIds.add(0, newId);
         model.addAttribute("maintenanceTask", new MaintenanceTask("", "", MaintenanceTaskStatus.ACTIVE, ""));
+        model.addAttribute("maintenanceTaskIds", maintenanceTaskIds);
         return "maintenanceTask/form";
     }
 

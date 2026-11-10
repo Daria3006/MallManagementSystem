@@ -37,4 +37,29 @@ public abstract class InMemoryBaseRepository<T> implements BaseRepository<T> {
     }
 
     protected abstract String extractId(T entity);
+
+    public String getNewId(){
+        int maxim = 0;
+        int entityId;
+        for (T entity : storage)
+        try {
+            entityId = Integer.parseInt(extractId(entity));
+            if (maxim <  entityId) {
+                maxim = entityId;
+            }
+        }
+        catch (NumberFormatException e) {
+            entityId = 0;
+        }
+        maxim += 1;
+        return String.valueOf(maxim);
+    }
+
+    public List<String> getAllIds(){
+        List<String> ids = new ArrayList<>();
+        for (T entity : storage) {
+            ids.add(extractId(entity));
+        }
+        return ids;
+    }
 }

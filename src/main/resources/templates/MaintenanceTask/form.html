@@ -16,7 +16,9 @@
 
     <div class="form-group">
         <label for="id">MaintenanceTask ID:</label>
-        <input type="text" id="id" th:field="*{id}" required />
+        <select id="id" th:field="*{id}" required>
+        <option th:each="maintenanceTaskId : ${maintenanceTaskIds}" th:value="${maintenanceTaskId}" th:text="${maintenanceTaskId}"></option>
+        </select>
     </div>
 
     <div class="form-group">
@@ -26,7 +28,7 @@
 
     <div class="form-group">
         <label for="status">Status:</label>
-        <select type="text" id="status" th:field="*{status}" required>
+        <select id="status" th:field="*{status}" required>
         <option value="ACTIVE">ACTIVE</option>
         <option value="PLANNED">PLANNED</option>
         <option value="DONE">DONE</option>

@@ -43,6 +43,13 @@ public class MaintenanceService {
         maintenanceTaskRepository.delete(id);
     }
 
+    public String getMaintenanceTaskNewId(){
+        return maintenanceTaskRepository.getNewId();
+    }
+
+    public List<String> getMaintenanceTaskAllIds(){
+        return maintenanceTaskRepository.getAllIds();
+    }
 
     public ElectricalAsset saveElectricalAsset(ElectricalAsset electricalAsset) {
         return electricalAssetRepository.save(electricalAsset);
