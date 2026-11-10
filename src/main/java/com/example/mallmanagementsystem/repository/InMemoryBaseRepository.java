@@ -41,17 +41,17 @@ public abstract class InMemoryBaseRepository<T> implements BaseRepository<T> {
     public String getNewId(){
         int maxim = 0;
         int entityId;
-        for (T entity : storage)
-        try {
-            entityId = Integer.parseInt(extractId(entity));
-            if (maxim <  entityId) {
-                maxim = entityId;
+        for (T entity : storage) {
+            try {
+                entityId = Integer.parseInt(extractId(entity));
+                if (maxim < entityId) {
+                    maxim = entityId;
+                }
+            } catch (NumberFormatException e) {
+                continue;
             }
+            maxim += 1;
         }
-        catch (NumberFormatException e) {
-            entityId = 0;
-        }
-        maxim += 1;
         return String.valueOf(maxim);
     }
 
