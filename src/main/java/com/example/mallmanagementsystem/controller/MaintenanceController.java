@@ -3,6 +3,7 @@ package com.example.mallmanagementsystem.controller;
 import com.example.mallmanagementsystem.model.*;
 import com.example.mallmanagementsystem.service.MaintenanceService;
 
+import com.example.mallmanagementsystem.service.MaintenanceTaskStaffAssignmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,9 +15,11 @@ import java.util.List;
 @RequestMapping("/maintenance")
 public class MaintenanceController {
     private final MaintenanceService maintenanceService;
+    private final MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService;
 
-    public MaintenanceController(MaintenanceService maintenanceService) {
+    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService) {
         this.maintenanceService = maintenanceService;
+        this.maintenanceTaskStaffAssignmentService = maintenanceTaskStaffAssignmentService;
     }
 
     @GetMapping("/maintenanceTasks")
@@ -30,9 +33,11 @@ public class MaintenanceController {
     public String newMaintenanceTask(Model model){
         String newId = maintenanceService.getMaintenanceTaskNewId();
         List<String> maintenanceTaskIds = this.maintenanceService.getMaintenanceTaskAllIds();
+        List<String> staffAssignmentsIds = this.maintenanceTaskStaffAssignmentService.getStaffAssignmentAllIds();
         maintenanceTaskIds.add(0, newId);
         model.addAttribute("maintenanceTask", new MaintenanceTask("", "", MaintenanceTaskStatus.ACTIVE, ""));
         model.addAttribute("maintenanceTaskIds", maintenanceTaskIds);
+        model.addAttribute("staffAssignmentsIds", staffAssignmentsIds);
         return "maintenanceTask/form";
     }
 

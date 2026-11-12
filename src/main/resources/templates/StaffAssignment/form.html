@@ -16,7 +16,9 @@
 
     <div class="form-group">
         <label for="id">StaffAssignment ID:</label>
-        <input type="text" id="id" th:field="*{id}" required />
+        <select id="id" th:field="*{id}" required>
+            <option th:each="staffAssignmentId : ${staffAssignmentsIds}" th:value="${staffAssignmentId}" th:text="${staffAssignmentId}"></option>
+        </select>
     </div>
 
     <div class="form-group">

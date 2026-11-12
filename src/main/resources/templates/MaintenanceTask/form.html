@@ -37,9 +37,16 @@
 
     <div class="form-group">
         <label for="assignmentId">AssignmentId:</label>
-        <input type="text" id="assignmentId" th:field="*{assignmentId}" required />
+        <select id="assignmentId" th:field="*{assignmentId}" required>
+            <option th:unless="${#lists.isEmpty(staffAssignmentsIds)}" th:each="staffAssignmentId : ${staffAssignmentsIds}" th:value="${staffAssignmentId}" th:text="${staffAssignmentId}"></option>
+        </select>
     </div>
-    <button type="submit">Save MaintenanceTasks</button>
+
+    <div th:if="${#lists.isEmpty(staffAssignmentsIds)}" class="text-danger">
+        No staff assignments available. You cannot create this object.
+    </div>
+
+    <button type="submit" th:disabled="${#lists.isEmpty(staffAssignmentsIds)}">Save MaintenanceTasks</button>
     <a th:href="@{/maintenance/maintenanceTasks}">Cancel</a>
 </form>
 </body>

@@ -78,7 +78,11 @@ public class StaffController {
 
     @GetMapping("/staffAssignments/new")
     public String newStaffAssignment(Model model){
+        String newId = staffService.getStaffAssignmentNewId();
+        List<String> staffAssignmentIds = staffService.getStaffAssignmentAllIds();
+        staffAssignmentIds.add(0, newId);
         model.addAttribute("staffAssignment", new StaffAssignment("", "", "", StaffAssignmentShift.MORNING));
+        model.addAttribute("staffAssignmentsIds", staffAssignmentIds);
         return "staffAssignment/form";
     }
 
