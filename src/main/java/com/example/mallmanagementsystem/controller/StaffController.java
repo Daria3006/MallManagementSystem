@@ -2,6 +2,7 @@ package com.example.mallmanagementsystem.controller;
 
 
 import com.example.mallmanagementsystem.model.*;
+import com.example.mallmanagementsystem.service.MaintenanceTaskStaffAssignmentService;
 import com.example.mallmanagementsystem.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,8 +15,10 @@ import java.util.List;
 @RequestMapping("/staff")
 public class StaffController {
     private final StaffService staffService;
+    private final MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService;
 
-    public StaffController(StaffService staffService) {
+    public StaffController(MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService, StaffService staffService) {
+        this.maintenanceTaskStaffAssignmentService = maintenanceTaskStaffAssignmentService;
         this.staffService = staffService;
     }
 
@@ -94,7 +97,10 @@ public class StaffController {
 
     @PostMapping("/staffAssignments/{id}/delete")
     public String deleteStaffAssignment(@PathVariable String id){
-        staffService.deleteStaffAssignment(id);
+        boolean used = this.maintenanceTaskStaffAssignmentService.isStaffAssignmentUsed(id);
+        if (!used){
+            staffService.deleteStaffAssignment(id);
+        }
         return "redirect:/staff/staffAssignments";
     }
 }
