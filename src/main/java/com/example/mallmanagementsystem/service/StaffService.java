@@ -76,6 +76,15 @@ public class StaffService {
         return maintenanceStaffRepository.getAllIds();
     }
 
+    public boolean isMaintenanceStaffUsed(String id) {
+        for (StaffAssignment staffAssignment : staffAssignmentRepository.findAll()) {
+            if (staffAssignment.getStaffId().equals(id)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 
     public StaffAssignment saveStaffAssignment(StaffAssignment staffAssignment) {
         return staffAssignmentRepository.save(staffAssignment);

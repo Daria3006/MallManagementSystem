@@ -72,7 +72,10 @@ public class StaffController {
 
     @PostMapping("/maintenanceStaff/{id}/delete")
     public String deleteMaintenanceStaff(@PathVariable String id){
-        staffService.deleteMaintenanceStaff(id);
+        boolean used = this.staffService.isMaintenanceStaffUsed(id);
+        if (!used) {
+            staffService.deleteMaintenanceStaff(id);
+        }
         return "redirect:/staff/maintenanceStaff";
     }
 
