@@ -43,7 +43,7 @@
     </div>
 
     <div th:if="${#lists.isEmpty(staffAssignmentsIds)}" class="text-danger">
-        No staff assignments available. You cannot create this object.
+        No StaffAssignment available. You cannot create this object.
     </div>
 
     <button type="submit" th:disabled="${#lists.isEmpty(staffAssignmentsIds)}">Save MaintenanceTasks</button>

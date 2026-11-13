@@ -68,6 +68,14 @@ public class StaffService {
         maintenanceStaffRepository.delete(id);
     }
 
+    public String getNewId(){
+        return maintenanceStaffRepository.getNewId();
+    }
+
+    public List<String> getAllMaintenanceStaffIds() {
+        return maintenanceStaffRepository.getAllIds();
+    }
+
 
     public StaffAssignment saveStaffAssignment(StaffAssignment staffAssignment) {
         return staffAssignmentRepository.save(staffAssignment);

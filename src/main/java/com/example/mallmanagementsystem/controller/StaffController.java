@@ -56,7 +56,11 @@ public class StaffController {
 
     @GetMapping("/maintenanceStaff/new")
     public String newMaintenanceStaff(Model model){
+        String newId = staffService.getNewId();
+        List<String> maintenanceStaffIds = staffService.getAllMaintenanceStaffIds();
+        maintenanceStaffIds.add(0, newId);
         model.addAttribute("maintenanceStaff", new MaintenanceStaff("", "", new ArrayList<>(), MaintenanceStaffType.CLEANING));
+        model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
         return "maintenanceStaff/form";
     }
 
@@ -83,9 +87,11 @@ public class StaffController {
     public String newStaffAssignment(Model model){
         String newId = staffService.getStaffAssignmentNewId();
         List<String> staffAssignmentIds = staffService.getStaffAssignmentAllIds();
+        List<String> maintenanceStaffIds = staffService.getAllMaintenanceStaffIds();
         staffAssignmentIds.add(0, newId);
         model.addAttribute("staffAssignment", new StaffAssignment("", "", "", StaffAssignmentShift.MORNING));
         model.addAttribute("staffAssignmentsIds", staffAssignmentIds);
+        model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
         return "staffAssignment/form";
     }
 
