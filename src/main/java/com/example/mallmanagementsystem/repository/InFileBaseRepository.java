@@ -1,8 +1,7 @@
 package com.example.mallmanagementsystem.repository;
 
-import org.springframework.stereotype.Repository;
-import tools.jackson.core.type.TypeReference;
-import tools.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.File;
 import java.io.IOException;
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-@Repository
 public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
     private final File file;
     private final ObjectMapper objectMapper;
@@ -36,7 +34,7 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
                     )
                     .withDefaultPrettyPrinter()
                     .writeValue(file, entities);
-        } catch (RuntimeException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Could not save to file", e);
         }
 
@@ -51,7 +49,7 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
 
         try {
             return objectMapper.readValue(file, new TypeReference<>() {});
-        } catch (RuntimeException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Could not read from file", e);
         }
     }
@@ -75,7 +73,7 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
                     )
                     .withDefaultPrettyPrinter()
                     .writeValue(file, entities);
-        } catch (RuntimeException e) {
+        } catch (IOException e) {
             throw new RuntimeException("Could not save to file", e);
         }
     }
