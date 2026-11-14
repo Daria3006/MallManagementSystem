@@ -12,9 +12,10 @@ import java.util.List;
 public class SalesService {
     private final InMemoryShopRepository shopRepository;
     private final InMemoryPurchaseRepository purchaseRepository;
-    private final InMemoryCustomerRepository customerRepository;
+    //private final InMemoryCustomerRepository customerRepository;
+    private final InFileCustomerRepository customerRepository;
 
-    public SalesService(InMemoryShopRepository shopRepository, InMemoryPurchaseRepository purchaseRepository, InMemoryCustomerRepository customerRepository) {
+    public SalesService(InMemoryShopRepository shopRepository, InMemoryPurchaseRepository purchaseRepository, InFileCustomerRepository customerRepository) {
         this.shopRepository = shopRepository;
         this.purchaseRepository = purchaseRepository;
         this.customerRepository = customerRepository;

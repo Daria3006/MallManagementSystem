@@ -10,6 +10,9 @@ public class Customer {
 
     private String email;
 
+    public Customer() {
+    }
+
     public Customer(String id, List<Purchase> purchases, String currency, String name, String email) {
         this.id = id;
         this.purchases = purchases;
