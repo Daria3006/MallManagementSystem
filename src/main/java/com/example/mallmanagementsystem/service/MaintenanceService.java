@@ -2,6 +2,8 @@ package com.example.mallmanagementsystem.service;
 
 import com.example.mallmanagementsystem.model.ElectricalAsset;
 import com.example.mallmanagementsystem.model.MaintenanceTask;
+import com.example.mallmanagementsystem.repository.BaseRepository;
+import com.example.mallmanagementsystem.repository.InFileMaintenanceTaskRepository;
 import com.example.mallmanagementsystem.repository.InMemoryElectricalAssetRepository;
 import com.example.mallmanagementsystem.repository.InMemoryMaintenanceTaskRepository;
 import org.springframework.stereotype.Service;
@@ -10,10 +12,10 @@ import java.util.List;
 
 @Service
 public class MaintenanceService {
-    private final InMemoryMaintenanceTaskRepository maintenanceTaskRepository;
+    private final BaseRepository<MaintenanceTask> maintenanceTaskRepository;
     private final InMemoryElectricalAssetRepository electricalAssetRepository;
 
-    public MaintenanceService(InMemoryMaintenanceTaskRepository maintenanceTaskRepository, InMemoryElectricalAssetRepository electricalAssetRepository) {
+    public MaintenanceService(InFileMaintenanceTaskRepository maintenanceTaskRepository, InMemoryElectricalAssetRepository electricalAssetRepository) {
         this.maintenanceTaskRepository = maintenanceTaskRepository;
         this.electricalAssetRepository = electricalAssetRepository;
     }
