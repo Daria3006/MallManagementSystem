@@ -30,7 +30,7 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
 
         try {
             objectMapper.writerFor(
-                            new TypeReference<List<T>>() {}
+                            getEntityTypeReference()
                     )
                     .withDefaultPrettyPrinter()
                     .writeValue(file, entities);
@@ -48,7 +48,7 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
         }
 
         try {
-            return objectMapper.readValue(file, new TypeReference<>() {});
+            return objectMapper.readValue(file, getEntityTypeReference());
         } catch (IOException e) {
             throw new RuntimeException("Could not read from file", e);
         }
@@ -69,7 +69,7 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
 
         try {
             objectMapper.writerFor(
-                            new TypeReference<List<T>>() {}
+                            getEntityTypeReference()
                     )
                     .withDefaultPrettyPrinter()
                     .writeValue(file, entities);
@@ -79,6 +79,8 @@ public abstract class InFileBaseRepository<T> implements BaseRepository<T> {
     }
 
     protected abstract String extractId(T entity);
+
+    protected abstract TypeReference<List<T>> getEntityTypeReference();
 
     @Override
     public String getNewId() {
