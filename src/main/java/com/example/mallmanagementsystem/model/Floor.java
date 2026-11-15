@@ -10,6 +10,8 @@ public class Floor {
     private List<ElectricalAsset> electricals;
     private List<StaffAssignment> assignments;
 
+    public Floor() {}
+
     public Floor(String id, int number, List<Shop> shops, List<MaintenanceTask> tasks, List<ElectricalAsset> electricals, List<StaffAssignment> assignments) {
         this.id = id;
         this.number = number;
