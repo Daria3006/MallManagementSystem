@@ -9,6 +9,8 @@ public class Shop {
     private double areaSqm;
     private List<Purchase> purchases;
 
+    public Shop() {}
+
     public Shop(String id, List<Purchase> purchases, double areaSqm, String ownerName, String name) {
         this.id = id;
         this.purchases = purchases;
