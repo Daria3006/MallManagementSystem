@@ -23,6 +23,7 @@
         <th>ID</th>
         <th>Name</th>
         <th>Type</th>
+        <th>Assignments</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -31,6 +32,12 @@
         <td th:text="${maintenanceStaff.id}">ID</td>
         <td th:text="${maintenanceStaff.name}">Name</td>
         <td th:text="${maintenanceStaff.type}">Type</td>
+        <td>
+            <ul th:each="staffAssignment : ${staffAssignments}">
+                <li th:text="${staffAssignment.id}"></li>
+            </ul>
+        </td>
+
         <td>
             <form th:action="@{'/staff/maintenanceStaff/' + ${maintenanceStaff.id} + '/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>

@@ -50,7 +50,9 @@ public class StaffController {
     @GetMapping("/maintenanceStaff")
     public String getAllMaintenanceStaff(Model model) {
         List<MaintenanceStaff> maintenanceStaff = this.staffService.findAllMaintenanceStaff();
+        List<StaffAssignment> staffAssignments = this.staffService.findAllStaffAssignment();
         model.addAttribute("maintenanceStaff", maintenanceStaff);
+        model.addAttribute("staffAssignments", staffAssignments);
         return "maintenanceStaff/index";
     }
 
@@ -59,7 +61,7 @@ public class StaffController {
         String newId = staffService.getNewId();
         List<String> maintenanceStaffIds = staffService.getAllMaintenanceStaffIds();
         maintenanceStaffIds.add(0, newId);
-        model.addAttribute("maintenanceStaff", new MaintenanceStaff("", "", new ArrayList<>(), MaintenanceStaffType.CLEANING));
+        model.addAttribute("maintenanceStaff", new MaintenanceStaff("", "", new ArrayList<>(),  MaintenanceStaffType.CLEANING));
         model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
         return "maintenanceStaff/form";
     }
@@ -92,9 +94,11 @@ public class StaffController {
         List<String> staffAssignmentIds = staffService.getStaffAssignmentAllIds();
         List<String> maintenanceStaffIds = staffService.getAllMaintenanceStaffIds();
         staffAssignmentIds.add(0, newId);
+
         model.addAttribute("staffAssignment", new StaffAssignment("", "", "", StaffAssignmentShift.MORNING));
         model.addAttribute("staffAssignmentsIds", staffAssignmentIds);
         model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
+
         return "staffAssignment/form";
     }
 
