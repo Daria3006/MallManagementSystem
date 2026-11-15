@@ -35,7 +35,7 @@ public class MaintenanceController {
         List<String> maintenanceTaskIds = this.maintenanceService.getMaintenanceTaskAllIds();
         List<String> staffAssignmentsIds = this.maintenanceTaskStaffAssignmentService.getStaffAssignmentAllIds();
         maintenanceTaskIds.add(0, newId);
-        model.addAttribute("maintenanceTask", new MaintenanceTask("", "", MaintenanceTaskStatus.ACTIVE, ""));
+        model.addAttribute("maintenanceTask", new MaintenanceTask("", "", "", MaintenanceTaskStatus.ACTIVE, ""));
         model.addAttribute("maintenanceTaskIds", maintenanceTaskIds);
         model.addAttribute("staffAssignmentsIds", staffAssignmentsIds);
         return "maintenanceTask/form";
