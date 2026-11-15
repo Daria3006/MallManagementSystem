@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Shop List</title>
+    <title>Shops</title>
     <style>
         table {
             width: 100%;
@@ -24,6 +24,16 @@
             display: flex;
             gap: 10px
         }
+
+        .error-message {
+            color: #D8000C;
+            background-color: #FFBABA;
+            border: 1px solid #D8000C;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -32,6 +42,10 @@
 <a th:href="@{/sales/shops/new}">
     <button>Create New Shop</button>
 </a>
+
+<div th:if="${errorMessage != null}" class="error-message">
+    <span th:text="${errorMessage}"></span>
+</div>
 
 <table>
     <thead>

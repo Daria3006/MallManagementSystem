@@ -37,11 +37,18 @@ public class SalesService {
     }
 
     public void deleteShop(String id){
+        if(isShopUsed(id)){
+            throw new RuntimeException("Shop with ID " + id + " is already used.");
+        }
         Shop shop = shopRepository.findById(id);
         if (shop == null) {
             throw new RuntimeException("Cannot delete: Shop with ID " + id + " not found.");
         }
         shopRepository.delete(id);
+    }
+
+    public String getShopNewId(){
+        return shopRepository.getNewId();
     }
 
     public Purchase savePurchase(Purchase purchase){
@@ -112,11 +119,18 @@ public class SalesService {
     }
 
     public void deleteCustomer(String id){
+        if(this.isCustomerUsed(id)){
+            throw new RuntimeException("Cannot delete: Customer with ID " + id + " is used.");
+        }
         Customer customer = customerRepository.findById(id);
         if (customer == null) {
             throw new RuntimeException("Cannot delete: Customer with ID " + id + " not found.");
         }
         customerRepository.delete(id);
+    }
+
+    public String getCustomerNewId(){
+        return customerRepository.getNewId();
     }
 
     public String getPurchaseNewId(){
@@ -137,7 +151,7 @@ public class SalesService {
 
     public boolean isCustomerUsed(String id){
         for(Purchase purchase : purchaseRepository.findAll()){
-            if(purchase.getCustomerId().equals(id)){
+            if(purchase.getCustomerId()!=null && purchase.getCustomerId().equals(id)){
                 return true;
             }
         }
@@ -146,10 +160,12 @@ public class SalesService {
 
     public boolean isShopUsed(String id){
         for(Purchase purchase : purchaseRepository.findAll()){
-            if(purchase.getShopId().equals(id)){
+            if(purchase.getShopId()!=null && purchase.getShopId().equals(id)){
                 return true;
             }
         }
         return false;
     }
+
+
 }

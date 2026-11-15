@@ -8,6 +8,7 @@ import com.example.mallmanagementsystem.service.SalesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +31,11 @@ public class SalesController {
 
     @GetMapping("/shops/new")
     public String newShop(Model model) {
+        String newId=salesService.getShopNewId();
+        List<String> shopIds=salesService.getShopAllIds();
+        shopIds.add(0,newId);
         model.addAttribute("shop",new Shop("",new ArrayList<>(),0,"",""));
+        model.addAttribute("shopIds",shopIds);
         return "Shop/form";
     }
 
@@ -41,8 +46,13 @@ public class SalesController {
     }
 
     @PostMapping("/shops/{id}/delete")
-    public String deleteShop(@PathVariable String id) {
+    public String deleteShop(@PathVariable String id, RedirectAttributes redirectAttributes) {
+        try{
         salesService.deleteShop(id);
+        }catch(RuntimeException e){
+            redirectAttributes.addFlashAttribute("errorMessage","Cannot delete!");
+            return "redirect:/sales/shops";
+        }
         return "redirect:/sales/shops";
     }
 
@@ -54,7 +64,15 @@ public class SalesController {
 
     @GetMapping("/purchases/new")
     public String newPurchase(Model model){
+        String newId=salesService.getPurchaseNewId();
+        List<String> purchaseIds=this.salesService.getPurchaseAllIds();
+        List<String> customerIds=this.salesService.getCustomerAllIds();
+        List<String> shopIds=this.salesService.getShopAllIds();
+        purchaseIds.add(0,newId);
         model.addAttribute("purchase",new Purchase("","","",0, PaymentMethod.CASH));
+        model.addAttribute("purchaseIds",purchaseIds);
+        model.addAttribute("customerIds",customerIds);
+        model.addAttribute("shopIds",shopIds);
         return "Purchase/form";
     }
 
@@ -78,7 +96,11 @@ public class SalesController {
 
     @GetMapping("/customers/new")
     public String newCustomer(Model model){
+        String newId=salesService.getCustomerNewId();
+        List<String> customerIds=this.salesService.getCustomerAllIds();
+        customerIds.add(0,newId);
         model.addAttribute("customer",new Customer("",new ArrayList<>(),"","",""));
+        model.addAttribute("customerIds",customerIds);
         return "Customer/form";
     }
 
@@ -89,8 +111,13 @@ public class SalesController {
     }
 
     @PostMapping("/customers/{id}/delete")
-    public String deleteCustomer(@PathVariable String id) {
+    public String deleteCustomer(@PathVariable String id, RedirectAttributes redirectAttributes) {
+        try{
         salesService.deleteCustomer(id);
+        }catch(RuntimeException e){
+            redirectAttributes.addFlashAttribute("errorMessage","Cannot delete!");
+            return "redirect:/sales/customers";
+        }
         return "redirect:/sales/customers";
     }
 }
