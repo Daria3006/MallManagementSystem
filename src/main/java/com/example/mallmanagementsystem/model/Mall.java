@@ -1,23 +1,27 @@
 package com.example.mallmanagementsystem.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Mall {
     private String id;
     private String name;
     private String city;
-    private List<Floor> floors;
+    private List<Floor> floors = new ArrayList<>();
 
     private String street;
     private int number;
 
-    public Mall(){}
+    public Mall() {
+    }
 
     public Mall(String id, String name, String city, List<Floor> floors, String street, int number) {
         this.id = id;
         this.name = name;
         this.city = city;
-        this.floors = floors;
+        if (floors != null) {
+            this.floors = floors;
+        }
         this.street = street;
         this.number = number;
     }
@@ -51,7 +55,9 @@ public class Mall {
     }
 
     public void setFloors(List<Floor> floors) {
-        this.floors = floors;
+        if (floors != null) {
+            this.floors = floors;
+        }
     }
 
     public String getStreet() {

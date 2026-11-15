@@ -7,6 +7,7 @@ import com.example.mallmanagementsystem.repository.InMemoryFloorRepository;
 import com.example.mallmanagementsystem.repository.InMemoryMallRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,6 +21,12 @@ public class StructureService {
     }
 
     public Mall saveMall(Mall mall) {
+        Mall existingMall=mallRepository.findById(mall.getId());
+        if(existingMall!=null){
+            mall.setFloors(existingMall.getFloors());
+        }else if(mall.getFloors()==null){
+            mall.setFloors(new ArrayList<>());
+        }
         return mallRepository.save(mall);
     }
 
@@ -36,6 +43,9 @@ public class StructureService {
     }
 
     public void deleteMall(String id) {
+        if(this.isMallUsed(id)){
+            throw new RuntimeException("Cannot delete: Mall with ID " + id + " is used.");
+        }
         Mall mall=mallRepository.findById(id);
         if(mall==null){
             throw new RuntimeException("Cannot delete: Mall with ID " + id + " not found.");
@@ -43,8 +53,23 @@ public class StructureService {
         mallRepository.delete(id);
     }
 
+    public boolean isMallUsed(String id) {
+        Mall mall=mallRepository.findById(id);
+        if (mall != null && mall.getFloors() != null) {
+            return !mall.getFloors().isEmpty();
+        }
+        return false;
+    }
+
     public Floor saveFloor(Floor floor){
-        return floorRepository.save(floor);
+        Floor savedFloor = floorRepository.save(floor);
+        List<Mall> allMalls = mallRepository.findAll();
+        if(!allMalls.isEmpty()){
+            Mall theMall = allMalls.get(0);
+            theMall.getFloors().add(savedFloor);
+            mallRepository.save(theMall);
+        }
+        return savedFloor;
     }
 
     public List<Floor> getAllFloors(){
@@ -64,8 +89,23 @@ public class StructureService {
         if (floor == null) {
             throw new RuntimeException("Cannot delete: Floor with ID " + id + " not found.");
         }
+        List<Mall> allMalls = mallRepository.findAll();
+        if(!allMalls.isEmpty()){
+            Mall theMall = allMalls.get(0);
+            if(theMall.getFloors()!=null){
+                theMall.getFloors().removeIf(f -> f.getId().equals(id));
+                mallRepository.save(theMall);
+            }
+        }
         floorRepository.delete(id);
     }
 
+    public String getFloorNewId(){
+        return floorRepository.getNewId();
+    }
+
+    public List<String> getFloorAllIds(){
+        return floorRepository.getAllIds();
+    }
 
 }

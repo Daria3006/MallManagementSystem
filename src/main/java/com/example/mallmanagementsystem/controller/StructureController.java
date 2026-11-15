@@ -6,8 +6,10 @@ import com.example.mallmanagementsystem.service.StructureService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/structure")
@@ -24,9 +26,15 @@ public class StructureController {
         model.addAttribute("malls", structureService.getAllMalls());
         return "Mall/index";
     }
+
     @GetMapping("/malls/new")
     public String newMall(Model model) {
-        model.addAttribute("mall", new Mall("", "", "", new ArrayList<>(), "", 0));
+        List<Mall> malls = structureService.getAllMalls();
+        if (malls.isEmpty()) {
+            model.addAttribute("mall", new Mall("M1", "", "", new ArrayList<>(), "", 0));
+        } else {
+            model.addAttribute("mall", malls.get(0));
+        }
         return "Mall/form";
     }
 
@@ -37,8 +45,13 @@ public class StructureController {
     }
 
     @PostMapping("/malls/{id}/delete")
-    public String deleteMall(@PathVariable String id) {
-        structureService.deleteMall(id);
+    public String deleteMall(@PathVariable String id, RedirectAttributes redirectAttributes) {
+        try {
+            structureService.deleteMall(id);
+        } catch (RuntimeException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", "Cannot delete mall!");
+            return "redirect:/structure/malls";
+        }
         return "redirect:/structure/malls";
     }
 
@@ -50,7 +63,11 @@ public class StructureController {
 
     @GetMapping("/floors/new")
     public String newFloor(Model model) {
+        String newId= structureService.getFloorNewId();
+        List<String> floorIds=structureService.getFloorAllIds();
+        floorIds.add(0,newId);
         model.addAttribute("floor", new Floor("", 0, new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
+        model.addAttribute("floorIds",floorIds);
         return "Floor/form";
     }
 
