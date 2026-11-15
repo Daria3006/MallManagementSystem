@@ -6,6 +6,9 @@ public class StaffAssignment {
     private String staffId;
     private StaffAssignmentShift shift;
 
+    public StaffAssignment() {
+    }
+
     public StaffAssignment(String id, String floorId, String staffId, StaffAssignmentShift shift) {
         this.id = id;
         this.floorId = floorId;

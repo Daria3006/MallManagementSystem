@@ -1,9 +1,10 @@
 package com.example.mallmanagementsystem.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class MaintenanceStaff extends Staff{
-    private List<StaffAssignment> assignments;
+    private List<StaffAssignment> assignments = new ArrayList<>();
     private MaintenanceStaffType type;
 
     public MaintenanceStaff() {
@@ -11,7 +12,9 @@ public class MaintenanceStaff extends Staff{
 
     public MaintenanceStaff(String id, String name, List<StaffAssignment> assignments, MaintenanceStaffType type) {
         super(id, name);
-        this.assignments = assignments;
+        if (assignments != null) {
+            this.assignments = assignments;
+        }
         this.type = type;
     }
 

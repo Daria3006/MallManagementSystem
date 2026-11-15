@@ -87,6 +87,7 @@ public class StaffService {
 
 
     public StaffAssignment saveStaffAssignment(StaffAssignment staffAssignment) {
+        this.addStaffAssignmentToMaintenanceStaff(staffAssignment);
         return staffAssignmentRepository.save(staffAssignment);
     }
 
@@ -107,6 +108,7 @@ public class StaffService {
         if (staffAssignment == null) {
             throw new RuntimeException("Cannot delete: StaffAssignment with ID" + id + "not found");
         }
+        this.deleteStaffAssignmentFromMaintenanceStaff(staffAssignment);
         staffAssignmentRepository.delete(id);
     }
 

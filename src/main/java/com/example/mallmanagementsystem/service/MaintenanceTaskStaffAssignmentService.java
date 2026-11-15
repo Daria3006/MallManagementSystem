@@ -1,18 +1,21 @@
 package com.example.mallmanagementsystem.service;
 
 import com.example.mallmanagementsystem.model.MaintenanceTask;
+import com.example.mallmanagementsystem.model.StaffAssignment;
+import com.example.mallmanagementsystem.repository.BaseRepository;
 import com.example.mallmanagementsystem.repository.InMemoryMaintenanceTaskRepository;
 import com.example.mallmanagementsystem.repository.InMemoryStaffAssignmentRepository;
 import org.springframework.stereotype.Service;
+import tools.jackson.core.ObjectReadContext;
 
 import java.util.List;
 
 @Service
 public class MaintenanceTaskStaffAssignmentService {
-    InMemoryMaintenanceTaskRepository maintenanceTaskRepository;
-    InMemoryStaffAssignmentRepository staffAssignmentRepository;
+    BaseRepository<MaintenanceTask> maintenanceTaskRepository;
+    BaseRepository<StaffAssignment> staffAssignmentRepository;
 
-    public MaintenanceTaskStaffAssignmentService(InMemoryMaintenanceTaskRepository maintenanceTaskRepository, InMemoryStaffAssignmentRepository staffAssignmentRepository) {
+    public MaintenanceTaskStaffAssignmentService(BaseRepository<MaintenanceTask> maintenanceTaskRepository, BaseRepository<StaffAssignment> staffAssignmentRepository) {
         this.maintenanceTaskRepository = maintenanceTaskRepository;
         this.staffAssignmentRepository = staffAssignmentRepository;
     }
