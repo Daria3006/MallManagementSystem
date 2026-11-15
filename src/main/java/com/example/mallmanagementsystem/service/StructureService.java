@@ -2,6 +2,7 @@ package com.example.mallmanagementsystem.service;
 
 import com.example.mallmanagementsystem.model.Floor;
 import com.example.mallmanagementsystem.model.Mall;
+import com.example.mallmanagementsystem.repository.BaseRepository;
 import com.example.mallmanagementsystem.repository.InMemoryFloorRepository;
 import com.example.mallmanagementsystem.repository.InMemoryMallRepository;
 import org.springframework.stereotype.Service;
@@ -10,10 +11,10 @@ import java.util.List;
 
 @Service
 public class StructureService {
-    private final InMemoryMallRepository mallRepository;
-    private final InMemoryFloorRepository floorRepository;
+    private final BaseRepository<Mall> mallRepository;
+    private final BaseRepository<Floor> floorRepository;
 
-    public StructureService(InMemoryMallRepository mallRepository, InMemoryFloorRepository floorRepository) {
+    public StructureService(BaseRepository<Mall> mallRepository, BaseRepository<Floor> floorRepository) {
         this.mallRepository = mallRepository;
         this.floorRepository = floorRepository;
     }

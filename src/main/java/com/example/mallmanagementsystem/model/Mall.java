@@ -11,6 +11,8 @@ public class Mall {
     private String street;
     private int number;
 
+    public Mall(){}
+
     public Mall(String id, String name, String city, List<Floor> floors, String street, int number) {
         this.id = id;
         this.name = name;
