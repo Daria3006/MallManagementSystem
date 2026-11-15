@@ -6,6 +6,9 @@ public class ElectricalAsset {
     private ElectricalAssetType type;
     private ElectricalAssetStatus status;
 
+    public ElectricalAsset() {
+    }
+
     public ElectricalAsset(String id, String floorId, ElectricalAssetType type, ElectricalAssetStatus status) {
         this.id = id;
         this.floorId = floorId;
