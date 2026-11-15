@@ -1,12 +1,13 @@
 package com.example.mallmanagementsystem.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Customer {
     private String id;
     private String name;
     private String currency;
-    private List<Purchase> purchases;
+    private List<Purchase> purchases=new ArrayList<>();
 
     private String email;
 
@@ -15,7 +16,9 @@ public class Customer {
 
     public Customer(String id, List<Purchase> purchases, String currency, String name, String email) {
         this.id = id;
-        this.purchases = purchases;
+        if(purchases!=null){
+            this.purchases = purchases;
+        }
         this.currency = currency;
         this.name = name;
         this.email = email;
@@ -34,7 +37,8 @@ public class Customer {
     }
 
     public void setPurchases(List<Purchase> purchases) {
-        this.purchases = purchases;
+        if(purchases!=null){
+        this.purchases = purchases;}
     }
 
     public String getCurrency() {

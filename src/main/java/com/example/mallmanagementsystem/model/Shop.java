@@ -1,5 +1,6 @@
 package com.example.mallmanagementsystem.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Shop {
@@ -7,13 +8,16 @@ public class Shop {
     private String name;
     private String ownerName;
     private double areaSqm;
-    private List<Purchase> purchases;
+    private List<Purchase> purchases = new ArrayList<>();
 
-    public Shop() {}
+    public Shop() {
+    }
 
     public Shop(String id, List<Purchase> purchases, double areaSqm, String ownerName, String name) {
         this.id = id;
-        this.purchases = purchases;
+        if (purchases != null) {
+            this.purchases = purchases;
+        }
         this.areaSqm = areaSqm;
         this.ownerName = ownerName;
         this.name = name;
@@ -32,7 +36,9 @@ public class Shop {
     }
 
     public void setPurchases(List<Purchase> purchases) {
-        this.purchases = purchases;
+        if (purchases != null) {
+            this.purchases = purchases;
+        }
     }
 
     public double getAreaSqm() {
