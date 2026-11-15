@@ -8,6 +8,8 @@ public class Purchase {
 
     private PaymentMethod paymentMethod;
 
+    public Purchase(){}
+
     public Purchase(String id, String customerId, String shopId, double amount, PaymentMethod paymentMethod) {
         this.id = id;
         this.customerId = customerId;
