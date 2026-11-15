@@ -3,19 +3,18 @@ package com.example.mallmanagementsystem.service;
 import com.example.mallmanagementsystem.model.Customer;
 import com.example.mallmanagementsystem.model.Purchase;
 import com.example.mallmanagementsystem.model.Shop;
-import com.example.mallmanagementsystem.repository.*;
+import com.example.mallmanagementsystem.repository.BaseRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
 public class SalesService {
-    private final InMemoryShopRepository shopRepository;
-    private final InMemoryPurchaseRepository purchaseRepository;
-    //private final InMemoryCustomerRepository customerRepository;
-    private final InFileCustomerRepository customerRepository;
+    private final BaseRepository<Shop> shopRepository;
+    private final BaseRepository<Purchase> purchaseRepository;
+    private final BaseRepository<Customer> customerRepository;
 
-    public SalesService(InMemoryShopRepository shopRepository, InMemoryPurchaseRepository purchaseRepository, InFileCustomerRepository customerRepository) {
+    public SalesService(BaseRepository<Shop> shopRepository, BaseRepository<Purchase> purchaseRepository, BaseRepository<Customer> customerRepository) {
         this.shopRepository = shopRepository;
         this.purchaseRepository = purchaseRepository;
         this.customerRepository = customerRepository;
@@ -51,11 +50,13 @@ public class SalesService {
         Customer customer = customerRepository.findById(purchase.getCustomerId());
         if (customer != null) {
             customer.getPurchases().add(saved);
+            customerRepository.save(customer);
         }
 
         Shop shop = shopRepository.findById(purchase.getShopId());
         if (shop != null) {
             shop.getPurchases().add(saved);
+            shopRepository.save(shop);
         }
 
         return saved;
@@ -82,11 +83,13 @@ public class SalesService {
         Customer customer = customerRepository.findById(purchase.getCustomerId());
         if (customer != null && customer.getPurchases() != null) {
             customer.getPurchases().removeIf(p -> p.getId().equals(id));
+            customerRepository.save(customer);
         }
 
         Shop shop = shopRepository.findById(purchase.getShopId());
         if (shop != null && shop.getPurchases() != null) {
             shop.getPurchases().removeIf(p -> p.getId().equals(id));
+            shopRepository.save(shop);
         }
 
         purchaseRepository.delete(id);
@@ -114,5 +117,39 @@ public class SalesService {
             throw new RuntimeException("Cannot delete: Customer with ID " + id + " not found.");
         }
         customerRepository.delete(id);
+    }
+
+    public String getPurchaseNewId(){
+        return  purchaseRepository.getNewId();
+    }
+
+    public List<String> getPurchaseAllIds(){
+        return purchaseRepository.getAllIds();
+    }
+
+    public List<String> getShopAllIds(){
+        return shopRepository.getAllIds();
+    }
+
+    public List<String> getCustomerAllIds(){
+        return customerRepository.getAllIds();
+    }
+
+    public boolean isCustomerUsed(String id){
+        for(Purchase purchase : purchaseRepository.findAll()){
+            if(purchase.getCustomerId().equals(id)){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isShopUsed(String id){
+        for(Purchase purchase : purchaseRepository.findAll()){
+            if(purchase.getShopId().equals(id)){
+                return true;
+            }
+        }
+        return false;
     }
 }
