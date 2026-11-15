@@ -6,6 +6,9 @@ public class MaintenanceStaff extends Staff{
     private List<StaffAssignment> assignments;
     private MaintenanceStaffType type;
 
+    public MaintenanceStaff() {
+    }
+
     public MaintenanceStaff(String id, String name, List<StaffAssignment> assignments, MaintenanceStaffType type) {
         super(id, name);
         this.assignments = assignments;
