@@ -3,6 +3,9 @@ package com.example.mallmanagementsystem.model;
 public class SecurityStaff extends Staff{
     private String badgeNo;
 
+    public SecurityStaff() {
+    }
+
     public SecurityStaff(String id, String name, String badgeNo) {
         super(id, name);
         this.badgeNo = badgeNo;
