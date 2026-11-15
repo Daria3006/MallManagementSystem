@@ -6,6 +6,9 @@ public class MaintenanceTask {
     private MaintenanceTaskStatus status;
     private String assignmentId;
 
+    public MaintenanceTask() {
+    }
+
     public MaintenanceTask(String id, String description, MaintenanceTaskStatus status, String assignmentId) {
         this.id = id;
         this.description = description;
