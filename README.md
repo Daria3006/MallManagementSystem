@@ -1,16 +1,19 @@
 # MallManagementSystem
 
 A Java Spring Boot application designed to manage the structure, sales, staff, and maintenance aspects of a shopping mall.
-This project is built using a 4-layer architecture (Model, Repository, Service and Controller) and currently uses in-memory data storage.
+This project is built using a 4-layer architecture (Model, Repository, Service and Controller) and uses both in-memory data storage and persistent JSON file-based data storage.
 
 ## Architecture
  1. **Model**: Contains classes for each entity and `Java enum` types to replace raw strings for attributes with fixed values.
- 2. **Repository**: Manages data storage and retrieval. Contains an interface `BaseRepository<T>` defining standard `CRUD` operations. The in-memory data management is done using a generic abstract class implementing the base repository. For each entity exists an in-memory repository extending the abstract class.
+ 2. **Repository**: Manages data storage and retrieval. Contains an interface `BaseRepository<T>` defining standard `CRUD` operations. The project supports a dual storage approach:
+    * **In-Memory**: Managed using a generic abstract class implementing the base repository, with entity-specific in-memory repositories extending it for temporary data handling.
+    * **In-File (JSON)**: Implemented using a generic `InFileRepository<T>` class that reads from and writes to dedicated `.json` files in the `src/main/resources/data/` directory to ensure permanent data persistence.
  3. **Service**: Contains the business logic. The Services are broken down based on functional domain areas:
-* **Structure**: Manages `malls` and `floors`.
-* **Sales**: Manages `shops`, `purchases`, and `customers`.
-* **Maintenance**: Manages `electrical assets` and `tasks`.
-* **Staff**: Manages `employees` and `shifts`.
+    * **Structure**: Manages `malls` and `floors`.
+    * **Sales**: Manages `shops`, `purchases`, and `customers`.
+    * **Maintenance**: Manages `electrical assets` and `tasks`.
+    * **Staff**: Manages `employees` and `shifts`.
+    * **Orchestrators (e.g., `FloorShopService`, `FloorMaintenanceTaskService`)**:They ensure that cross-entity relationships are safely synchronized across multiple JSON files simultaneously.
  4. **Controller**: Combines logic with user requests. Each controller has a specific service whose functions it calls to execute the actual business operations and return the correct data back to the user.
 
 ## Web Features
