@@ -1,6 +1,51 @@
 [ {
   "id" : "1",
-  "name" : "`",
+  "name" : "Robert Clark",
+  "assignments" : [ ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "2",
+  "name" : "Christopher Lewis",
+  "assignments" : [ ],
+  "type" : "CLEANING"
+}, {
+  "id" : "3",
+  "name" : "Andrew Walker",
+  "assignments" : [ ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "4",
+  "name" : "Joshua Hall",
+  "assignments" : [ ],
+  "type" : "CLEANING"
+}, {
+  "id" : "5",
+  "name" : "Matthew Allen",
+  "assignments" : [ ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "6",
+  "name" : "Brandon Young",
+  "assignments" : [ ],
+  "type" : "CLEANING"
+}, {
+  "id" : "7",
+  "name" : "Nicholas King",
+  "assignments" : [ ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "8",
+  "name" : "Tyler Wright",
+  "assignments" : [ ],
+  "type" : "CLEANING"
+}, {
+  "id" : "9",
+  "name" : "Samuel Scott",
+  "assignments" : [ ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "10",
+  "name" : "Benjamin Green",
   "assignments" : [ ],
   "type" : "CLEANING"
 } ]
