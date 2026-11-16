@@ -38,10 +38,12 @@ public class MaintenanceController {
         String newId = maintenanceService.getMaintenanceTaskNewId();
         List<String> maintenanceTaskIds = this.maintenanceService.getMaintenanceTaskAllIds();
         List<String> staffAssignmentsIds = this.maintenanceTaskStaffAssignmentService.getStaffAssignmentAllIds();
+        List<String> floorIds = this.electricalAssetFloorService.getAllFloorIds();
         maintenanceTaskIds.add(0, newId);
         model.addAttribute("maintenanceTask", new MaintenanceTask("", "", "", MaintenanceTaskStatus.ACTIVE, ""));
         model.addAttribute("maintenanceTaskIds", maintenanceTaskIds);
         model.addAttribute("staffAssignmentsIds", staffAssignmentsIds);
+        model.addAttribute("floorIds", floorIds);
         return "MaintenanceTask/form";
     }
 

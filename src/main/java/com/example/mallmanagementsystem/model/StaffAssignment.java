@@ -2,7 +2,6 @@ package com.example.mallmanagementsystem.model;
 
 public class StaffAssignment {
     private String id;
-    private String floorId;
     private String staffId;
     private StaffAssignmentShift shift;
 
@@ -11,7 +10,6 @@ public class StaffAssignment {
 
     public StaffAssignment(String id, String floorId, String staffId, StaffAssignmentShift shift) {
         this.id = id;
-        this.floorId = floorId;
         this.staffId = staffId;
         this.shift = shift;
     }
@@ -22,14 +20,6 @@ public class StaffAssignment {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public String getFloorId() {
-        return floorId;
-    }
-
-    public void setFloorId(String floorId) {
-        this.floorId = floorId;
     }
 
     public String getStaffId() {
@@ -52,7 +42,6 @@ public class StaffAssignment {
     public String toString() {
         return "StaffAssignment{" +
                 "id='" + id + '\'' +
-                ", floorId='" + floorId + '\'' +
                 ", staffId='" + staffId + '\'' +
                 ", shift='" + shift + '\'' +
                 '}';
