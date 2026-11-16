@@ -6,6 +6,7 @@ import com.example.mallmanagementsystem.model.StaffAssignment;
 import com.example.mallmanagementsystem.repository.BaseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -123,12 +124,20 @@ public class StaffService {
     public void addStaffAssignmentToMaintenanceStaff(StaffAssignment staffAssignment) {
         String staffId = staffAssignment.getStaffId();
         MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
-        maintenanceStaff.addAssignment(staffAssignment);
+        if (maintenanceStaff != null) {
+            if (maintenanceStaff.getAssignments() == null ){
+                maintenanceStaff.setAssignments(new ArrayList<>());
+            }
+            maintenanceStaff.addAssignment(staffAssignment);
+            maintenanceStaffRepository.save(maintenanceStaff);
+        }
     }
 
     public void deleteStaffAssignmentFromMaintenanceStaff(StaffAssignment staffAssignment) {
         String staffId = staffAssignment.getStaffId();
         MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
-        maintenanceStaff.deleteAssignment(staffAssignment);
+        if (maintenanceStaff != null && maintenanceStaff.getAssignments() != null)
+            maintenanceStaff.deleteAssignment(staffAssignment);
+        maintenanceStaffRepository.save(maintenanceStaff);
     }
 }
