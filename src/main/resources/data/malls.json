@@ -1,1 +1,16 @@
-[ ]
+[ {
+  "id" : "M1",
+  "name" : "Iulius Mall",
+  "city" : "Cluj Napoca",
+  "floors" : [ ],
+  "street" : "Alexandru Vaida Voevod",
+  "number" : 53
+},{"id":"2","name":"Vivo!","city":"Cluj-Napoca","floors":[],"street":"Avram Iancu","number":492},
+  {"id":"3","name":"Platinia","city":"Cluj-Napoca","floors":[],"street":"Calea Manastur","number":2},
+  {"id":"4","name":"Mega Mall","city":"Bucharest","floors":[],"street":"Pierre de Coubertin","number":3},
+  {"id":"5","name":"AFI Cotroceni","city":"Bucharest","floors":[],"street":"Vasile Milea","number":4},
+  {"id":"6","name":"Promenada","city":"Bucharest","floors":[],"street":"Calea Floreasca","number":246},
+  {"id":"7","name":"Palas Mall","city":"Iasi","floors":[],"street":"Palas","number":7},
+  {"id":"8","name":"Shopping City","city":"Timisoara","floors":[],"street":"Sagului","number":100},
+  {"id":"9","name":"City Park","city":"Constanta","floors":[],"street":"Alexandru Lapusneanu","number":116},
+  {"id":"10","name":"Lotus Center","city":"Oradea","floors":[],"street":"Nufarului","number":30}]
