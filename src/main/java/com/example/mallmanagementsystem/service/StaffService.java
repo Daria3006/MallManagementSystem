@@ -47,6 +47,14 @@ public class StaffService {
         securityStaffRepository.delete(id);
     }
 
+    public String getNewSecurityStaffId() {
+        return securityStaffRepository.getNewId();
+    }
+
+    public List<String> getAllSecurityStaffIds() {
+        return securityStaffRepository.getAllIds();
+    }
+
     public MaintenanceStaff saveMaintenanceStaff(MaintenanceStaff maintenanceStaff) {
         return maintenanceStaffRepository.save(maintenanceStaff);
     }

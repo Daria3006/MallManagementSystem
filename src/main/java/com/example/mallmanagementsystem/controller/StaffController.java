@@ -32,7 +32,11 @@ public class StaffController {
 
     @GetMapping("/securityStaff/new")
     public String newSecurityStaff(Model model){
+        String newId = staffService.getNewSecurityStaffId();
+        List<String> securityStaffIDs = staffService.getAllSecurityStaffIds();
+        securityStaffIDs.add(0, newId);
         model.addAttribute("securityStaff", new SecurityStaff("", "", ""));
+        model.addAttribute("securityStaffIds", securityStaffIDs);
         return "SecurityStaff/form";
     }
 
@@ -98,7 +102,7 @@ public class StaffController {
         List<String> maintenanceStaffIds = staffService.getAllMaintenanceStaffIds();
         staffAssignmentIds.add(0, newId);
 
-        model.addAttribute("staffAssignment", new StaffAssignment("", "", "", StaffAssignmentShift.MORNING));
+        model.addAttribute("staffAssignment", new StaffAssignment("", "", StaffAssignmentShift.MORNING));
         model.addAttribute("staffAssignmentsIds", staffAssignmentIds);
         model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
 

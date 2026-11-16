@@ -8,7 +8,7 @@ public class StaffAssignment {
     public StaffAssignment() {
     }
 
-    public StaffAssignment(String id, String floorId, String staffId, StaffAssignmentShift shift) {
+    public StaffAssignment(String id, String staffId, StaffAssignmentShift shift) {
         this.id = id;
         this.staffId = staffId;
         this.shift = shift;
