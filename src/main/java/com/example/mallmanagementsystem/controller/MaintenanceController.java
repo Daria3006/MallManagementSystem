@@ -2,6 +2,7 @@ package com.example.mallmanagementsystem.controller;
 
 import com.example.mallmanagementsystem.model.*;
 import com.example.mallmanagementsystem.service.ElectricalAssetFloorService;
+import com.example.mallmanagementsystem.service.FloorMaintenanceTaskService;
 import com.example.mallmanagementsystem.service.MaintenanceService;
 
 import com.example.mallmanagementsystem.service.MaintenanceTaskStaffAssignmentService;
@@ -19,11 +20,13 @@ public class MaintenanceController {
     private final MaintenanceService maintenanceService;
     private final MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService;
     private final ElectricalAssetFloorService electricalAssetFloorService;
+    private final FloorMaintenanceTaskService floorMaintenanceTaskService;
 
-    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService, ElectricalAssetFloorService electricalAssetFloorService) {
+    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService, ElectricalAssetFloorService electricalAssetFloorService, FloorMaintenanceTaskService floorMaintenanceTaskService) {
         this.maintenanceService = maintenanceService;
         this.maintenanceTaskStaffAssignmentService = maintenanceTaskStaffAssignmentService;
         this.electricalAssetFloorService = electricalAssetFloorService;
+        this.floorMaintenanceTaskService = floorMaintenanceTaskService;
     }
 
     @GetMapping("/maintenanceTasks")
@@ -49,13 +52,13 @@ public class MaintenanceController {
 
     @PostMapping("/maintenanceTasks")
     public String createMaintenanceTask(@ModelAttribute MaintenanceTask maintenanceTask){
-        maintenanceService.saveMaintenanceTask(maintenanceTask);
+        floorMaintenanceTaskService.saveMaintenanceTask(maintenanceTask);
         return "redirect:/maintenance/maintenanceTasks";
     }
 
     @PostMapping("/maintenanceTasks/{id}/delete")
     public String deleteMaintenanceTask(@PathVariable String id){
-        maintenanceService.deleteMaintenanceTask(id);
+        floorMaintenanceTaskService.deleteMaintenanceTask(id);
         return "redirect:/maintenance/maintenanceTasks";
     }
 
