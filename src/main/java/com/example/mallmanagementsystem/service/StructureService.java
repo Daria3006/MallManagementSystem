@@ -64,9 +64,15 @@ public class StructureService {
         Floor existingFloor=floorRepository.findById(floor.getId());
         if(existingFloor!=null){
             floor.setShops(existingFloor.getShops());
+            floor.setTasks(existingFloor.getTasks());
+            floor.setElectricals(existingFloor.getElectricals());
+            floor.setAssignments(existingFloor.getAssignments());
         }else {
             if(floor.getShops()==null){
                 floor.setShops(new ArrayList<>());
+                if(floor.getTasks() == null) floor.setTasks(new ArrayList<>());
+                if(floor.getElectricals() == null) floor.setElectricals(new ArrayList<>());
+                if(floor.getAssignments() == null) floor.setAssignments(new ArrayList<>());
             }
         }
 
@@ -154,11 +160,36 @@ public class StructureService {
 
     }
 
+    public void addMaintenanceTaskToFloor(MaintenanceTask task) {
+        if (task.getFloorId() == null || task.getFloorId().isEmpty()) return;
+        Floor floor = floorRepository.findById(task.getFloorId());
+        if (floor != null) {
+            if (floor.getTasks() == null) floor.setTasks(new ArrayList<>());
+            floor.getTasks().removeIf(t -> t.getId().equals(task.getId()));
+            floor.getTasks().add(task);
+            floorRepository.save(floor);
+            this.addFloorToMall(floor);
+        }
+    }
+
+    public void deleteMaintenanceTaskFromFloor(String taskId, String floorId) {
+        if (floorId == null || floorId.isEmpty()) return;
+        Floor floor = floorRepository.findById(floorId);
+        if (floor != null && floor.getTasks() != null) {
+            floor.getTasks().removeIf(t -> t.getId().equals(taskId));
+            floorRepository.save(floor);
+            this.addFloorToMall(floor);
+        }
+    }
+
     public boolean isFloorUsed(String id){
             Floor floor=floorRepository.findById(id);
             if(floor!=null){
                 boolean hasShops=floor.getShops()!=null && !floor.getShops().isEmpty();
-            return hasShops;}
+                boolean hasTasks = floor.getTasks() != null && !floor.getTasks().isEmpty();
+                boolean hasElectricals = floor.getElectricals() != null && !floor.getElectricals().isEmpty();
+                boolean hasAssignments = floor.getAssignments() != null && !floor.getAssignments().isEmpty();
+            return hasShops || hasTasks || hasElectricals || hasAssignments;}
         return false;}
 
 }

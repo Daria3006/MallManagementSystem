@@ -1,12 +1,14 @@
 package com.example.mallmanagementsystem.controller;
 
 import com.example.mallmanagementsystem.model.*;
+import com.example.mallmanagementsystem.service.FloorMaintenanceTaskService;
 import com.example.mallmanagementsystem.service.MaintenanceService;
 
 import com.example.mallmanagementsystem.service.MaintenanceTaskStaffAssignmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.util.List;
@@ -16,10 +18,12 @@ import java.util.List;
 public class MaintenanceController {
     private final MaintenanceService maintenanceService;
     private final MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService;
+    private final FloorMaintenanceTaskService floorMaintenanceTaskService;
 
-    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService) {
+    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService, FloorMaintenanceTaskService floorMaintenanceTaskService) {
         this.maintenanceService = maintenanceService;
         this.maintenanceTaskStaffAssignmentService = maintenanceTaskStaffAssignmentService;
+        this.floorMaintenanceTaskService = floorMaintenanceTaskService;
     }
 
     @GetMapping("/maintenanceTasks")
@@ -34,22 +38,29 @@ public class MaintenanceController {
         String newId = maintenanceService.getMaintenanceTaskNewId();
         List<String> maintenanceTaskIds = this.maintenanceService.getMaintenanceTaskAllIds();
         List<String> staffAssignmentsIds = this.maintenanceTaskStaffAssignmentService.getStaffAssignmentAllIds();
+        List<String> floorIds=floorMaintenanceTaskService.getAllFloorIds();
         maintenanceTaskIds.add(0, newId);
         model.addAttribute("maintenanceTask", new MaintenanceTask("", "", "", MaintenanceTaskStatus.ACTIVE, ""));
         model.addAttribute("maintenanceTaskIds", maintenanceTaskIds);
         model.addAttribute("staffAssignmentsIds", staffAssignmentsIds);
+        model.addAttribute("floorIds", floorIds);
         return "maintenanceTask/form";
     }
 
     @PostMapping("/maintenanceTasks")
     public String createMaintenanceTask(@ModelAttribute MaintenanceTask maintenanceTask){
-        maintenanceService.saveMaintenanceTask(maintenanceTask);
+        floorMaintenanceTaskService.saveMaintenanceTask(maintenanceTask);
         return "redirect:/maintenance/maintenanceTasks";
     }
 
     @PostMapping("/maintenanceTasks/{id}/delete")
-    public String deleteMaintenanceTask(@PathVariable String id){
-        maintenanceService.deleteMaintenanceTask(id);
+    public String deleteMaintenanceTask(@PathVariable String id, RedirectAttributes redirectAttributes){
+        try{
+        floorMaintenanceTaskService.deleteMaintenanceTask(id);
+        }catch(RuntimeException e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            return "redirect:/maintenance/maintenanceTasks";
+        }
         return "redirect:/maintenance/maintenanceTasks";
     }
 

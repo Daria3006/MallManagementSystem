@@ -24,6 +24,7 @@
         <th>Description</th>
         <th>Status</th>
         <th>AssignmentID</th>
+        <th>Floor ID</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -33,6 +34,7 @@
         <td th:text="${maintenanceTask.description}">Description</td>
         <td th:text="${maintenanceTask.status}">Status</td>
         <td th:text="${maintenanceTask.assignmentId}">AssignmentID</td>
+        <td th:text="${maintenanceTask.floorId}">FloorID</td>
         <td>
             <form th:action="@{'/maintenance/maintenanceTasks/' + ${maintenanceTask.id} + '/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
