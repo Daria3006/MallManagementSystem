@@ -1,41 +1,6 @@
 [ {
-  "id" : "1",
-  "name" : "Robert Clark",
-  "assignments" : [ ],
-  "type" : "ELECTRICAL"
-}, {
-  "id" : "2",
-  "name" : "Christopher Lewis",
-  "assignments" : [ ],
-  "type" : "CLEANING"
-}, {
-  "id" : "3",
-  "name" : "Andrew Walker",
-  "assignments" : [ ],
-  "type" : "ELECTRICAL"
-}, {
-  "id" : "4",
-  "name" : "Joshua Hall",
-  "assignments" : [ ],
-  "type" : "CLEANING"
-}, {
-  "id" : "5",
-  "name" : "Matthew Allen",
-  "assignments" : [ ],
-  "type" : "ELECTRICAL"
-}, {
   "id" : "6",
   "name" : "Brandon Young",
-  "assignments" : [ ],
-  "type" : "CLEANING"
-}, {
-  "id" : "7",
-  "name" : "Nicholas King",
-  "assignments" : [ ],
-  "type" : "ELECTRICAL"
-}, {
-  "id" : "8",
-  "name" : "Tyler Wright",
   "assignments" : [ ],
   "type" : "CLEANING"
 }, {
@@ -44,8 +9,83 @@
   "assignments" : [ ],
   "type" : "ELECTRICAL"
 }, {
+  "id" : "1",
+  "name" : "Robert Clark",
+  "assignments" : [ {
+    "id" : "1",
+    "staffId" : "1",
+    "shift" : "MORNING"
+  }, {
+    "id" : "2",
+    "staffId" : "1",
+    "shift" : "EVENING"
+  } ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "2",
+  "name" : "Christopher Lewis",
+  "assignments" : [ {
+    "id" : "3",
+    "staffId" : "2",
+    "shift" : "MORNING"
+  } ],
+  "type" : "CLEANING"
+}, {
+  "id" : "3",
+  "name" : "Andrew Walker",
+  "assignments" : [ {
+    "id" : "4",
+    "staffId" : "3",
+    "shift" : "NIGHT"
+  } ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "4",
+  "name" : "Joshua Hall",
+  "assignments" : [ {
+    "id" : "5",
+    "staffId" : "4",
+    "shift" : "MORNING"
+  }, {
+    "id" : "6",
+    "staffId" : "4",
+    "shift" : "NIGHT"
+  } ],
+  "type" : "CLEANING"
+}, {
+  "id" : "5",
+  "name" : "Matthew Allen",
+  "assignments" : [ {
+    "id" : "7",
+    "staffId" : "5",
+    "shift" : "EVENING"
+  } ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "7",
+  "name" : "Nicholas King",
+  "assignments" : [ {
+    "id" : "8",
+    "staffId" : "7",
+    "shift" : "MORNING"
+  } ],
+  "type" : "ELECTRICAL"
+}, {
+  "id" : "8",
+  "name" : "Tyler Wright",
+  "assignments" : [ {
+    "id" : "9",
+    "staffId" : "8",
+    "shift" : "EVENING"
+  } ],
+  "type" : "CLEANING"
+}, {
   "id" : "10",
   "name" : "Benjamin Green",
-  "assignments" : [ ],
+  "assignments" : [ {
+    "id" : "10",
+    "staffId" : "10",
+    "shift" : "NIGHT"
+  } ],
   "type" : "CLEANING"
 } ]

@@ -1,6 +1,41 @@
 [ {
   "id" : "1",
-  "floorId" : "3",
   "staffId" : "1",
   "shift" : "MORNING"
+}, {
+  "id" : "2",
+  "staffId" : "1",
+  "shift" : "EVENING"
+}, {
+  "id" : "3",
+  "staffId" : "2",
+  "shift" : "MORNING"
+}, {
+  "id" : "4",
+  "staffId" : "3",
+  "shift" : "NIGHT"
+}, {
+  "id" : "5",
+  "staffId" : "4",
+  "shift" : "MORNING"
+}, {
+  "id" : "6",
+  "staffId" : "4",
+  "shift" : "NIGHT"
+}, {
+  "id" : "7",
+  "staffId" : "5",
+  "shift" : "EVENING"
+}, {
+  "id" : "8",
+  "staffId" : "7",
+  "shift" : "MORNING"
+}, {
+  "id" : "9",
+  "staffId" : "8",
+  "shift" : "EVENING"
+}, {
+  "id" : "10",
+  "staffId" : "10",
+  "shift" : "NIGHT"
 } ]
