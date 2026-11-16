@@ -80,14 +80,14 @@ public class MaintenanceController {
 
     @PostMapping("/electricalAssets")
     public String createElectricalAsset(@ModelAttribute ElectricalAsset electricalAsset){
-        maintenanceService.saveElectricalAsset(electricalAsset);
+        electricalAssetFloorService.saveElectricalAsset(electricalAsset);
         return "redirect:/maintenance/electricalAssets";
     }
 
     @PostMapping("/electricalAssets/{id}/delete")
     public String deleteElectricalAsset(@PathVariable String id, RedirectAttributes redirectAttributes){
         try{
-            maintenanceService.deleteElectricalAsset(id);
+            electricalAssetFloorService.deleteElectricalAsset(id);
         } catch(RuntimeException e){
             redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
