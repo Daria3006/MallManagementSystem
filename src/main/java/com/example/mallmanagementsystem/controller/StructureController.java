@@ -31,7 +31,7 @@ public class StructureController {
     public String newMall(Model model) {
         List<Mall> malls = structureService.getAllMalls();
         if (malls.isEmpty()) {
-            model.addAttribute("mall", new Mall("M1", "", "", new ArrayList<>(), "", 0));
+            model.addAttribute("mall", new Mall("2", "", "", new ArrayList<>(), "", 0));
         } else {
             model.addAttribute("mall", malls.get(0));
         }
