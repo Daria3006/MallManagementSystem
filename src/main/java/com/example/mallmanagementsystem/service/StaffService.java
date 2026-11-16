@@ -1,10 +1,12 @@
 package com.example.mallmanagementsystem.service;
 
-import com.example.mallmanagementsystem.model.MaintenanceStaff;
-import com.example.mallmanagementsystem.model.SecurityStaff;
-import com.example.mallmanagementsystem.model.StaffAssignment;
+import com.example.mallmanagementsystem.model.*;
 import com.example.mallmanagementsystem.repository.BaseRepository;
+import com.example.mallmanagementsystem.repository.InFileMaintenanceStaffRepository;
+import com.example.mallmanagementsystem.repository.InFileSecurityStaffRepository;
+import com.example.mallmanagementsystem.repository.InFileStaffAssignmentRepository;
 import org.springframework.stereotype.Service;
+import tools.jackson.core.ObjectReadContext;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -104,12 +106,7 @@ public class StaffService {
         return staffAssignment;
     }
 
-    public void deleteStaffAssignment(String id) {
-        StaffAssignment staffAssignment = staffAssignmentRepository.findById(id);
-        if (staffAssignment == null) {
-            throw new RuntimeException("Cannot delete: StaffAssignment with ID" + id + "not found");
-        }
-        this.deleteStaffAssignmentFromMaintenanceStaff(staffAssignment);
+    public void deleteStaffAssignment(String id){
         staffAssignmentRepository.delete(id);
     }
 
@@ -131,13 +128,5 @@ public class StaffService {
             maintenanceStaff.addAssignment(staffAssignment);
             maintenanceStaffRepository.save(maintenanceStaff);
         }
-    }
-
-    public void deleteStaffAssignmentFromMaintenanceStaff(StaffAssignment staffAssignment) {
-        String staffId = staffAssignment.getStaffId();
-        MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
-        if (maintenanceStaff != null && maintenanceStaff.getAssignments() != null)
-            maintenanceStaff.deleteAssignment(staffAssignment);
-        maintenanceStaffRepository.save(maintenanceStaff);
     }
 }

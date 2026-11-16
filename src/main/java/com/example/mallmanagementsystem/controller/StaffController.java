@@ -7,6 +7,7 @@ import com.example.mallmanagementsystem.service.StaffService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -109,10 +110,12 @@ public class StaffController {
     }
 
     @PostMapping("/staffAssignments/{id}/delete")
-    public String deleteStaffAssignment(@PathVariable String id){
-        boolean used = this.maintenanceTaskStaffAssignmentService.isStaffAssignmentUsed(id);
-        if (!used){
-            staffService.deleteStaffAssignment(id);
+    public String deleteStaffAssignment(@PathVariable String id, RedirectAttributes redirectAttributes){
+        try {
+            maintenanceTaskStaffAssignmentService.deleteStaffAssignment(id);
+        }
+        catch (RuntimeException e) {
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
         return "redirect:/staff/staffAssignments";
     }
