@@ -6,6 +6,7 @@ import com.example.mallmanagementsystem.model.Shop;
 import com.example.mallmanagementsystem.repository.BaseRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -21,6 +22,13 @@ public class SalesService {
     }
 
     public Shop saveShop(Shop shop){
+        Shop existingShop=shopRepository.findById(shop.getId());
+        if(existingShop!=null){
+            shop.setPurchases(existingShop.getPurchases());
+        }
+        else if(shop.getPurchases()==null){
+            shop.setPurchases(new ArrayList<>());
+        }
         return shopRepository.save(shop);
     }
 
@@ -56,12 +64,20 @@ public class SalesService {
 
         Customer customer = customerRepository.findById(purchase.getCustomerId());
         if (customer != null) {
+            if(customer.getPurchases()==null){
+                customer.setPurchases(new ArrayList<>());
+            }
+            customer.getPurchases().removeIf(p->p.getId().equals(saved.getId()));
             customer.getPurchases().add(saved);
             customerRepository.save(customer);
         }
 
         Shop shop = shopRepository.findById(purchase.getShopId());
         if (shop != null) {
+            if(shop.getPurchases()==null){
+                shop.setPurchases(new ArrayList<>());
+            }
+            shop.getPurchases().removeIf(p->p.getId().equals(saved.getId()));
             shop.getPurchases().add(saved);
             shopRepository.save(shop);
         }
@@ -103,6 +119,12 @@ public class SalesService {
     }
 
     public Customer saveCustomer(Customer customer){
+        Customer existingCustomer = customerRepository.findById(customer.getId());
+        if(existingCustomer != null){
+            customer.setPurchases(existingCustomer.getPurchases());
+        }else if(customer.getPurchases()==null){
+            customer.setPurchases(new ArrayList<>());
+        }
         return customerRepository.save(customer);
     }
 
