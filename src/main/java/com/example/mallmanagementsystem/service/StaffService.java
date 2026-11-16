@@ -68,6 +68,9 @@ public class StaffService {
         if (maintenanceStaff == null) {
             throw new RuntimeException("Cannot delete: MaintenanceStaff with ID" + id + "not found");
         }
+        if (isMaintenanceStaffUsed(id)){
+            throw new RuntimeException("Cannot delete: MaintenanceStaff with ID " + id + " is used.");
+        }
         maintenanceStaffRepository.delete(id);
     }
 

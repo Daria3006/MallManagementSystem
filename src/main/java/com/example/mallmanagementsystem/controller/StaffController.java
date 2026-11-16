@@ -74,10 +74,12 @@ public class StaffController {
     }
 
     @PostMapping("/maintenanceStaff/{id}/delete")
-    public String deleteMaintenanceStaff(@PathVariable String id){
-        boolean used = this.staffService.isMaintenanceStaffUsed(id);
-        if (!used) {
+    public String deleteMaintenanceStaff(@PathVariable String id, RedirectAttributes redirectAttributes) {
+        try{
             staffService.deleteMaintenanceStaff(id);
+        }
+        catch(RuntimeException e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
         }
         return "redirect:/staff/maintenanceStaff";
     }

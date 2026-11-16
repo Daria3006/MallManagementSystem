@@ -11,6 +11,16 @@
         .compact-list { margin: 0; padding-left: 18px;}
         .compact-list li { margin: 2px 0; font-size: 14px; color: #334155;
         }
+
+        .error-message {
+            color: #D8000C;
+            background-color: #FFBABA;
+            border: 1px solid #D8000C;
+            padding: 10px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -19,6 +29,10 @@
 <a th:href="@{/staff/maintenanceStaff/new}">
     <button>Create New MaintenanceStaff</button>
 </a>
+
+<div th:if="${errorMessage != null}" class="error-message">
+    <span th:text="${errorMessage}"></span>
+</div>
 
 <table>
     <thead>
