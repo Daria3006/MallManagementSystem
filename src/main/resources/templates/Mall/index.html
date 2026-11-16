@@ -8,6 +8,8 @@
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #f2f2f2; }
         .actions { display: flex; gap: 10px; }
+        .compact-list { margin: 0; padding-left: 18px; }
+        .compact-list li { margin: 2px 0; font-size: 14px; color: #334155; }
 
         .error-message {
             color: #D8000C;
@@ -37,6 +39,7 @@
         <th>City</th>
         <th>Street</th>
         <th>Number</th>
+        <th>Floors</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -48,13 +51,18 @@
         <td th:text="${mall.street}">Street</td>
         <td th:text="${mall.number}">Number</td>
         <td>
+            <ul class="compact-list">
+                <li th:each="floor : ${mall.floors}" th:text="${floor.id}"></li>
+            </ul>
+        </td>
+        <td>
             <form th:action="@{'/structure/malls/' + ${mall.id} + '/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     <tr th:if="${#lists.isEmpty(malls)}">
-        <td colspan="6" style="text-align: center;">No Malls found.</td>
+        <td colspan="7" style="text-align: center;">No Malls found.</td>
     </tr>
     </tbody>
 </table>

@@ -8,7 +8,8 @@
         th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
         th { background-color: #f2f2f2; }
         .actions{display: flex;gap: 10px}
-
+        .compact-list { margin: 0; padding-left: 18px; }
+        .compact-list li { margin: 2px 0; font-size: 14px; color: #334155; }
         .error-message {
             color: #D8000C;
             background-color: #FFBABA;
@@ -34,6 +35,9 @@
     <tr>
         <th>ID</th>
         <th>Floor Number</th>
+        <th>Shops</th>
+        <th>Tasks</th>
+        <th>Electrical Assets</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -42,13 +46,28 @@
         <td th:text="${floor.id}">ID</td>
         <td th:text="${floor.number}">Number</td>
         <td>
+            <ul class="compact-list">
+                <li th:each="shop : ${floor.shops}" th:text="${shop.id}"></li>
+            </ul>
+        </td>
+        <td>
+            <ul class="compact-list">
+                <li th:each="task : ${floor.tasks}" th:text="${task.id}"></li>
+            </ul>
+        </td>
+        <td>
+            <ul class="compact-list">
+                <li th:each="electrical : ${floor.electricals}" th:text="${electrical.id}"></li>
+            </ul>
+        </td>
+        <td>
             <form th:action="@{'/structure/floors/' + ${floor.id} + '/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     <tr th:if="${#lists.isEmpty(floors)}">
-        <td colspan="4" style="text-align: center;">No Floors found.</td>
+        <td colspan="6" style="text-align: center;">No Floors found.</td>
     </tr>
     </tbody>
 </table>
