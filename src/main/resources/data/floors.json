@@ -1,131 +1,388 @@
-[ {
-  "id" : "5",
-  "number" : 5,
-  "shops" : [ ],
-  "tasks" : [ ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "6",
-  "number" : 6,
-  "shops" : [ ],
-  "tasks" : [ ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "8",
-  "number" : 8,
-  "shops" : [ ],
-  "tasks" : [ ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "9",
-  "number" : 9,
-  "shops" : [ ],
-  "tasks" : [ ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "2",
-  "number" : 2,
-  "shops" : [ ],
-  "tasks" : [ {
-    "id" : "3",
-    "description" : "Inspect main electrical breaker panel and test backup circuits",
-    "floorId" : "2",
-    "status" : "PLANNED",
-    "assignmentId" : "3"
-  }, {
-    "id" : "4",
-    "description" : "Deep clean escalator handrails and glass balustrades",
-    "floorId" : "2",
-    "status" : "DONE",
-    "assignmentId" : "4"
-  }, {
-    "id" : "5",
-    "description" : "Repair faulty automatic sliding door sensor at north entrance",
-    "floorId" : "2",
-    "status" : "ACTIVE",
-    "assignmentId" : "5"
-  } ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "1",
-  "number" : 1,
-  "shops" : [ ],
-  "tasks" : [ {
-    "id" : "1",
-    "description" : "Replace flickering LED ceiling lights in main corridor",
-    "floorId" : "1",
-    "status" : "ACTIVE",
-    "assignmentId" : "1"
-  }, {
-    "id" : "2",
-    "description" : "Clean and sanitize public restroom facilities near food court",
-    "floorId" : "1",
-    "status" : "ACTIVE",
-    "assignmentId" : "2"
-  } ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "3",
-  "number" : 3,
-  "shops" : [ ],
-  "tasks" : [ {
-    "id" : "6",
-    "description" : "Polish marble flooring in central atrium",
-    "floorId" : "3",
-    "status" : "DONE",
-    "assignmentId" : "6"
-  } ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "4",
-  "number" : 4,
-  "shops" : [ ],
-  "tasks" : [ {
-    "id" : "7",
-    "description" : "Check emergency exit lighting batteries and replace dead units",
-    "floorId" : "4",
-    "status" : "PLANNED",
-    "assignmentId" : "7"
-  }, {
-    "id" : "8",
-    "description" : "Sanitize seating area and waste bins in dining zone",
-    "floorId" : "4",
-    "status" : "ACTIVE",
-    "assignmentId" : "8"
-  } ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "7",
-  "number" : 7,
-  "shops" : [ ],
-  "tasks" : [ {
-    "id" : "9",
-    "description" : "Troubleshoot power outlet failure in retail wing B",
-    "floorId" : "7",
-    "status" : "PLANNED",
-    "assignmentId" : "9"
-  } ],
-  "electricals" : [ ],
-  "assignments" : null
-}, {
-  "id" : "10",
-  "number" : 10,
-  "shops" : [ ],
-  "tasks" : [ {
-    "id" : "10",
-    "description" : "Sweep and mop service hallways and loading dock area",
-    "floorId" : "10",
-    "status" : "ACTIVE",
-    "assignmentId" : "10"
-  } ],
-  "electricals" : [ ],
-  "assignments" : null
-} ]
+[
+  {
+    "id": "6",
+    "number": 6,
+    "shops": [],
+    "tasks": [],
+    "electricals": [],
+    "assignments": null
+  },
+  {
+    "id": "9",
+    "number": 9,
+    "shops": [],
+    "tasks": [],
+    "electricals": [],
+    "assignments": null
+  },
+  {
+    "id": "1",
+    "number": 1,
+    "shops": [
+      {
+        "id": "2",
+        "name": "H&M",
+        "ownerName": "Hennes & Mauritz",
+        "areaSqm": 300.0,
+        "purchases": [
+          {
+            "id": "2",
+            "customerId": "2",
+            "shopId": "2",
+            "amount": 89.9,
+            "paymentMethod": "CASH"
+          }
+        ],
+        "floorId": "1"
+      },
+      {
+        "id": "9",
+        "name": "Starbucks",
+        "ownerName": "Starbucks Corp",
+        "areaSqm": 60.0,
+        "purchases": [
+          {
+            "id": "5",
+            "customerId": "5",
+            "shopId": "9",
+            "amount": 25.5,
+            "paymentMethod": "COUPON"
+          }
+        ],
+        "floorId": "1"
+      },
+      {
+        "id": "7",
+        "name": "Sephora",
+        "ownerName": "LVMH",
+        "areaSqm": 120.0,
+        "purchases": [
+          {
+            "id": "6",
+            "customerId": "6",
+            "shopId": "7",
+            "amount": 210.0,
+            "paymentMethod": "CARD"
+          }
+        ],
+        "floorId": "1"
+      },
+      {
+        "id": "1",
+        "name": "Zara",
+        "ownerName": "Inditex",
+        "areaSqm": 250.0,
+        "purchases": [
+          {
+            "id": "1",
+            "customerId": "1",
+            "shopId": "1",
+            "amount": 150.0,
+            "paymentMethod": "CARD"
+          },
+          {
+            "id": "9",
+            "customerId": "9",
+            "shopId": "1",
+            "amount": 199.9,
+            "paymentMethod": "CARD"
+          }
+        ],
+        "floorId": "1"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "1",
+        "description": "Replace flickering LED ceiling lights in main corridor",
+        "floorId": "1",
+        "status": "ACTIVE",
+        "assignmentId": "1"
+      },
+      {
+        "id": "2",
+        "description": "Clean and sanitize public restroom facilities near food court",
+        "floorId": "1",
+        "status": "ACTIVE",
+        "assignmentId": "2"
+      }
+    ],
+    "electricals": [
+      {
+        "id": "1",
+        "floorId": "1",
+        "type": "LIFT",
+        "status": "WORKING"
+      },
+      {
+        "id": "2",
+        "floorId": "1",
+        "type": "LIGHT",
+        "status": "WORKING"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "2",
+    "number": 2,
+    "shops": [
+      {
+        "id": "4",
+        "name": "Adidas",
+        "ownerName": "Adidas AG",
+        "areaSqm": 140.0,
+        "purchases": [],
+        "floorId": "2"
+      },
+      {
+        "id": "8",
+        "name": "C&A",
+        "ownerName": "Brenninkmeijer",
+        "areaSqm": 200.0,
+        "purchases": [],
+        "floorId": "2"
+      },
+      {
+        "id": "3",
+        "name": "Nike",
+        "ownerName": "Nike Inc",
+        "areaSqm": 150.0,
+        "purchases": [
+          {
+            "id": "3",
+            "customerId": "3",
+            "shopId": "3",
+            "amount": 450.0,
+            "paymentMethod": "CARD"
+          }
+        ],
+        "floorId": "2"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "3",
+        "description": "Inspect main electrical breaker panel and test backup circuits",
+        "floorId": "2",
+        "status": "PLANNED",
+        "assignmentId": "3"
+      },
+      {
+        "id": "4",
+        "description": "Deep clean escalator handrails and glass balustrades",
+        "floorId": "2",
+        "status": "DONE",
+        "assignmentId": "4"
+      },
+      {
+        "id": "5",
+        "description": "Repair faulty automatic sliding door sensor at north entrance",
+        "floorId": "2",
+        "status": "ACTIVE",
+        "assignmentId": "5"
+      }
+    ],
+    "electricals": [
+      {
+        "id": "3",
+        "floorId": "2",
+        "type": "ESCALATOR",
+        "status": "WORKING"
+      },
+      {
+        "id": "4",
+        "floorId": "2",
+        "type": "AC",
+        "status": "DOWN"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "3",
+    "number": 3,
+    "shops": [
+      {
+        "id": "5",
+        "name": "KFC",
+        "ownerName": "Yum Brands",
+        "areaSqm": 85.0,
+        "purchases": [
+          {
+            "id": "4",
+            "customerId": "4",
+            "shopId": "5",
+            "amount": 35.0,
+            "paymentMethod": "CASH"
+          }
+        ],
+        "floorId": "3"
+      },
+      {
+        "id": "6",
+        "name": "McDonalds",
+        "ownerName": "McDonalds Corp",
+        "areaSqm": 80.0,
+        "purchases": [
+          {
+            "id": "10",
+            "customerId": "10",
+            "shopId": "6",
+            "amount": 42.0,
+            "paymentMethod": "CASH"
+          }
+        ],
+        "floorId": "3"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "6",
+        "description": "Polish marble flooring in central atrium",
+        "floorId": "3",
+        "status": "DONE",
+        "assignmentId": "6"
+      }
+    ],
+    "electricals": [
+      {
+        "id": "5",
+        "floorId": "3",
+        "type": "LIFT",
+        "status": "WORKING"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "4",
+    "number": 4,
+    "shops": [
+      {
+        "id": "10",
+        "name": "Cinema City",
+        "ownerName": "Cineworld",
+        "areaSqm": 800.0,
+        "purchases": [
+          {
+            "id": "7",
+            "customerId": "7",
+            "shopId": "10",
+            "amount": 4.0,
+            "paymentMethod": "CARD"
+          },
+          {
+            "id": "8",
+            "customerId": "3",
+            "shopId": "10",
+            "amount": 45.0,
+            "paymentMethod": "CASH"
+          }
+        ],
+        "floorId": "4"
+      }
+    ],
+    "tasks": [
+      {
+        "id": "7",
+        "description": "Check emergency exit lighting batteries and replace dead units",
+        "floorId": "4",
+        "status": "PLANNED",
+        "assignmentId": "7"
+      },
+      {
+        "id": "8",
+        "description": "Sanitize seating area and waste bins in dining zone",
+        "floorId": "4",
+        "status": "ACTIVE",
+        "assignmentId": "8"
+      }
+    ],
+    "electricals": [
+      {
+        "id": "6",
+        "floorId": "4",
+        "type": "LIGHT",
+        "status": "DOWN"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "7",
+    "number": 7,
+    "shops": [],
+    "tasks": [
+      {
+        "id": "9",
+        "description": "Troubleshoot power outlet failure in retail wing B",
+        "floorId": "7",
+        "status": "PLANNED",
+        "assignmentId": "9"
+      }
+    ],
+    "electricals": [
+      {
+        "id": "7",
+        "floorId": "7",
+        "type": "ESCALATOR",
+        "status": "WORKING"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "5",
+    "number": 5,
+    "shops": [],
+    "tasks": [],
+    "electricals": [
+      {
+        "id": "8",
+        "floorId": "5",
+        "type": "AC",
+        "status": "WORKING"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "8",
+    "number": 8,
+    "shops": [],
+    "tasks": [],
+    "electricals": [
+      {
+        "id": "9",
+        "floorId": "8",
+        "type": "AC",
+        "status": "DOWN"
+      }
+    ],
+    "assignments": null
+  },
+  {
+    "id": "10",
+    "number": 10,
+    "shops": [],
+    "tasks": [
+      {
+        "id": "10",
+        "description": "Sweep and mop service hallways and loading dock area",
+        "floorId": "10",
+        "status": "ACTIVE",
+        "assignmentId": "10"
+      }
+    ],
+    "electricals": [
+      {
+        "id": "10",
+        "floorId": "10",
+        "type": "LIGHT",
+        "status": "WORKING"
+      }
+    ],
+    "assignments": null
+  }
+]

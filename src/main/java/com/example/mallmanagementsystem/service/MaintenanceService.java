@@ -76,10 +76,10 @@ public class MaintenanceService {
     }
 
     public String getElectricalAssetNewId(){
-        return maintenanceTaskRepository.getNewId();
+        return electricalAssetRepository.getNewId();
     }
 
     public List<String> getElectricalAssetAllIds(){
-        return maintenanceTaskRepository.getAllIds();
+        return electricalAssetRepository.getAllIds();
     }
 }

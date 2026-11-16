@@ -1,1 +1,51 @@
-[ ]
+[ {
+  "id" : "1",
+  "floorId" : "1",
+  "type" : "LIFT",
+  "status" : "WORKING"
+}, {
+  "id" : "2",
+  "floorId" : "1",
+  "type" : "LIGHT",
+  "status" : "WORKING"
+}, {
+  "id" : "3",
+  "floorId" : "2",
+  "type" : "ESCALATOR",
+  "status" : "WORKING"
+}, {
+  "id" : "4",
+  "floorId" : "2",
+  "type" : "AC",
+  "status" : "DOWN"
+}, {
+  "id" : "5",
+  "floorId" : "3",
+  "type" : "LIFT",
+  "status" : "WORKING"
+}, {
+  "id" : "6",
+  "floorId" : "4",
+  "type" : "LIGHT",
+  "status" : "DOWN"
+}, {
+  "id" : "7",
+  "floorId" : "7",
+  "type" : "ESCALATOR",
+  "status" : "WORKING"
+}, {
+  "id" : "8",
+  "floorId" : "5",
+  "type" : "AC",
+  "status" : "WORKING"
+}, {
+  "id" : "9",
+  "floorId" : "8",
+  "type" : "AC",
+  "status" : "DOWN"
+}, {
+  "id" : "10",
+  "floorId" : "10",
+  "type" : "LIGHT",
+  "status" : "WORKING"
+} ]
