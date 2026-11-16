@@ -120,7 +120,7 @@ public class SalesController {
         try{
         salesService.deleteCustomer(id);
         }catch(RuntimeException e){
-            redirectAttributes.addFlashAttribute("errorMessage","Cannot delete!");
+            redirectAttributes.addFlashAttribute("errorMessage",e.getMessage());
             return "redirect:/sales/customers";
         }
         return "redirect:/sales/customers";
