@@ -83,13 +83,13 @@ public class SalesController {
 
     @PostMapping("/purchases")
     public String createPurchase(@ModelAttribute Purchase purchase) {
-        salesService.savePurchase(purchase);
+        floorShopService.savePurchase(purchase);
         return "redirect:/sales/purchases";
     }
 
     @PostMapping("/purchases/{id}/delete")
     public String deletePurchase(@PathVariable String id) {
-        salesService.deletePurchase(id);
+        floorShopService.deletePurchase(id);
         return "redirect:/sales/purchases";
     }
 
