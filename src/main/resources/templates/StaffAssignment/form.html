@@ -22,11 +22,6 @@
     </div>
 
     <div class="form-group">
-        <label for="floorId">Floor ID:</label>
-        <input type="text" id="floorId" th:field="*{floorId}" required />
-    </div>
-
-    <div class="form-group">
         <label for="staffId">Staff ID:</label>
         <select id="staffId" th:field="*{staffId}" required>
             <option th:unless="${#lists.isEmpty(maintenanceStaffIds)}" th:each="maintenanceStaffId : ${maintenanceStaffIds}" th:value="${maintenanceStaffId}" th:text="${maintenanceStaffId}"></option>
