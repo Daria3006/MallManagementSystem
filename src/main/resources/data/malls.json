@@ -1,7 +1,7 @@
 [ {
-  "id" : "M1",
+  "id" : "2",
   "name" : "Iulius Mall",
-  "city" : "Cluj Napoca",
+  "city" : "Cluj-Napoca",
   "floors" : [ {
     "id" : "1",
     "number" : 1,
@@ -9,126 +9,63 @@
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Alexandru Vaida Voevod",
-  "number" : 53
-}, {
-  "id" : "2",
-  "name" : "Vivo!",
-  "city" : "Cluj-Napoca",
-  "floors" : [ {
+  }, {
     "id" : "2",
     "number" : 2,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Avram Iancu",
-  "number" : 492
-}, {
-  "id" : "3",
-  "name" : "Platinia",
-  "city" : "Cluj-Napoca",
-  "floors" : [ {
+  }, {
     "id" : "3",
     "number" : 3,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Calea Manastur",
-  "number" : 2
-}, {
-  "id" : "4",
-  "name" : "Mega Mall",
-  "city" : "Bucharest",
-  "floors" : [ {
+  }, {
     "id" : "4",
     "number" : 4,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Pierre de Coubertin",
-  "number" : 3
-}, {
-  "id" : "5",
-  "name" : "AFI Cotroceni",
-  "city" : "Bucharest",
-  "floors" : [ {
+  }, {
     "id" : "5",
     "number" : 5,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Vasile Milea",
-  "number" : 4
-}, {
-  "id" : "6",
-  "name" : "Promenada",
-  "city" : "Bucharest",
-  "floors" : [ {
+  }, {
     "id" : "6",
     "number" : 6,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Calea Floreasca",
-  "number" : 246
-}, {
-  "id" : "7",
-  "name" : "Palas Mall",
-  "city" : "Iasi",
-  "floors" : [ {
+  }, {
     "id" : "7",
     "number" : 7,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Palas",
-  "number" : 7
-}, {
-  "id" : "8",
-  "name" : "Shopping City",
-  "city" : "Timisoara",
-  "floors" : [ {
+  }, {
     "id" : "8",
     "number" : 8,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Sagului",
-  "number" : 100
-}, {
-  "id" : "9",
-  "name" : "City Park",
-  "city" : "Constanta",
-  "floors" : [ {
+  }, {
     "id" : "9",
-    "number" : 8,
+    "number" : 9,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
-  } ],
-  "street" : "Alexandru Lapusneanu",
-  "number" : 116
-}, {
-  "id" : "10",
-  "name" : "Lotus Center",
-  "city" : "Oradea",
-  "floors" : [ {
+  }, {
     "id" : "10",
     "number" : 10,
     "shops" : [ ],
@@ -136,6 +73,6 @@
     "electricals" : [ ],
     "assignments" : null
   } ],
-  "street" : "Nufarului",
-  "number" : 30
+  "street" : "Alexandru Vaida Voevod",
+  "number" : 53
 } ]
