@@ -7,8 +7,8 @@ public class Floor {
     private String id;
     private int number;
     private List<Shop> shops = new ArrayList<>();
-    private List<MaintenanceTask> tasks;
-    private List<ElectricalAsset> electricals;
+    private List<MaintenanceTask> tasks = new ArrayList<>();
+    private List<ElectricalAsset> electricals = new ArrayList<>();
     private List<StaffAssignment> assignments;
 
     public Floor() {
@@ -20,8 +20,12 @@ public class Floor {
         if (shops != null) {
             this.shops = shops;
         }
-        this.tasks = tasks;
-        this.electricals = electricals;
+        if (tasks != null) {
+            this.tasks = tasks;
+        }
+        if (electricals != null) {
+            this.electricals = electricals;
+        }
         this.assignments = assignments;
     }
 
@@ -56,7 +60,9 @@ public class Floor {
     }
 
     public void setTasks(List<MaintenanceTask> tasks) {
-        this.tasks = tasks;
+        if (tasks != null) {
+            this.tasks = tasks;
+        }
     }
 
     public List<ElectricalAsset> getElectricals() {
@@ -64,7 +70,9 @@ public class Floor {
     }
 
     public void setElectricals(List<ElectricalAsset> electricals) {
-        this.electricals = electricals;
+        if (electricals != null) {
+            this.electricals = electricals;
+        }
     }
 
     public List<StaffAssignment> getAssignments() {

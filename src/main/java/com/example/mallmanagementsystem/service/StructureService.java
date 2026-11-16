@@ -2,8 +2,6 @@ package com.example.mallmanagementsystem.service;
 
 import com.example.mallmanagementsystem.model.*;
 import com.example.mallmanagementsystem.repository.BaseRepository;
-import com.example.mallmanagementsystem.repository.InMemoryFloorRepository;
-import com.example.mallmanagementsystem.repository.InMemoryMallRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -66,13 +64,11 @@ public class StructureService {
             floor.setShops(existingFloor.getShops());
             floor.setTasks(existingFloor.getTasks());
             floor.setElectricals(existingFloor.getElectricals());
-            floor.setAssignments(existingFloor.getAssignments());
         }else {
             if(floor.getShops()==null){
                 floor.setShops(new ArrayList<>());
                 if(floor.getTasks() == null) floor.setTasks(new ArrayList<>());
                 if(floor.getElectricals() == null) floor.setElectricals(new ArrayList<>());
-                if(floor.getAssignments() == null) floor.setAssignments(new ArrayList<>());
             }
         }
 
@@ -188,8 +184,7 @@ public class StructureService {
                 boolean hasShops=floor.getShops()!=null && !floor.getShops().isEmpty();
                 boolean hasTasks = floor.getTasks() != null && !floor.getTasks().isEmpty();
                 boolean hasElectricals = floor.getElectricals() != null && !floor.getElectricals().isEmpty();
-                boolean hasAssignments = floor.getAssignments() != null && !floor.getAssignments().isEmpty();
-            return hasShops || hasTasks || hasElectricals || hasAssignments;}
+            return hasShops || hasTasks || hasElectricals ;}
         return false;}
 
 }

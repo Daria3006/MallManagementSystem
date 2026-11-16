@@ -49,7 +49,7 @@ public class StructureController {
         try {
             structureService.deleteMall(id);
         } catch (RuntimeException e) {
-            redirectAttributes.addFlashAttribute("errorMessage", "Cannot delete mall!");
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
             return "redirect:/structure/malls";
         }
         return "redirect:/structure/malls";
