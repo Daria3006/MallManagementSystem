@@ -8,7 +8,8 @@
         th,td{border:1px solid #ddd;padding: 8px;text-align: left;}
         th{background-color: #f2f2f2;}
         .actions{display: flex;gap: 10px}
-
+        .compact-list { margin: 0; padding-left: 18px; }
+        .compact-list li { margin: 2px 0; font-size: 14px; color: #334155; }
         .error-message {
             color: #D8000C;
             background-color: #FFBABA;
@@ -37,6 +38,7 @@
         <th>Name</th>
         <th>Currency</th>
         <th>Email</th>
+        <th>Purchases</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -47,13 +49,18 @@
         <td th:text="${customer.currency}">Currency</td>
         <td th:text="${customer.email}">Email</td>
         <td>
+            <ul class="compact-list">
+                <li th:each="purchase : ${customer.purchases}" th:text="${purchase.id}"></li>
+            </ul>
+        </td>
+        <td>
             <form th:action="@{'/sales/customers/'+${customer.id}+'/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     <tr th:if="${#lists.isEmpty(customers)}">
-        <td colspan="5" style="text-align: center;">No Customers found.</td>
+        <td colspan="6" style="text-align: center;">No Customers found.</td>
     </tr>
     </tbody>
 </table>

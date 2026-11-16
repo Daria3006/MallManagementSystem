@@ -25,6 +25,9 @@
             gap: 10px
         }
 
+        .compact-list { margin: 0; padding-left: 18px; }
+        .compact-list li { margin: 2px 0; font-size: 14px; color: #334155; }
+
         .error-message {
             color: #D8000C;
             background-color: #FFBABA;
@@ -55,6 +58,7 @@
         <th>Owner Name</th>
         <th>Area</th>
         <th>Floor ID</th>
+        <th>Purchases</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -66,13 +70,18 @@
         <td th:text="${shop.areaSqm}">Area</td>
         <td th:text="${shop.floorId}">Floor ID</td>
         <td>
+            <ul class="compact-list">
+                <li th:each="purchase : ${shop.purchases}" th:text="${purchase.id}"></li>
+            </ul>
+        </td>
+        <td>
             <form th:action="@{'/sales/shops/'+${shop.id}+'/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
             </form>
         </td>
     </tr>
     <tr th:if="${#lists.isEmpty(shops)}">
-        <td colspan="6" style="text-align: center;">No Shops found.</td>
+        <td colspan="7" style="text-align: center;">No Shops found.</td>
     </tr>
     </tbody>
 </table>
