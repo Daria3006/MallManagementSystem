@@ -178,6 +178,28 @@ public class StructureService {
         }
     }
 
+    public void adddElectricalAssetToFloor(ElectricalAsset electricalAsset) {
+        if (electricalAsset.getFloorId() == null || electricalAsset.getFloorId().isEmpty()) return;
+        Floor floor = floorRepository.findById(electricalAsset.getFloorId());
+        if (floor != null) {
+            if (floor.getElectricals() == null) floor.setElectricals(new ArrayList<>());
+            floor.getElectricals().removeIf(t -> t.getId().equals(electricalAsset.getId()));
+            floor.getElectricals().add(electricalAsset);
+            floorRepository.save(floor);
+            this.addFloorToMall(floor);
+        }
+    }
+
+    public void deleteElectricalAssetFromFloor(String electricalAssetId, String floorId) {
+        if (floorId == null || floorId.isEmpty()) return;
+        Floor floor = floorRepository.findById(floorId);
+        if (floor != null && floor.getTasks() != null) {
+            floor.getElectricals().removeIf(t -> t.getId().equals(electricalAssetId));
+            floorRepository.save(floor);
+            this.addFloorToMall(floor);
+        }
+    }
+
     public boolean isFloorUsed(String id){
             Floor floor=floorRepository.findById(id);
             if(floor!=null){

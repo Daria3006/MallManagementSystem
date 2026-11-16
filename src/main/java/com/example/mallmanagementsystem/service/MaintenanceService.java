@@ -74,4 +74,12 @@ public class MaintenanceService {
         }
         electricalAssetRepository.delete(id);
     }
+
+    public String getElectricalAssetNewId(){
+        return maintenanceTaskRepository.getNewId();
+    }
+
+    public List<String> getElectricalAssetAllIds(){
+        return maintenanceTaskRepository.getAllIds();
+    }
 }

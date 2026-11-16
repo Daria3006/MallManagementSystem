@@ -1,12 +1,14 @@
 package com.example.mallmanagementsystem.controller;
 
 import com.example.mallmanagementsystem.model.*;
+import com.example.mallmanagementsystem.service.ElectricalAssetFloorService;
 import com.example.mallmanagementsystem.service.MaintenanceService;
 
 import com.example.mallmanagementsystem.service.MaintenanceTaskStaffAssignmentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 
 import java.util.List;
@@ -16,10 +18,12 @@ import java.util.List;
 public class MaintenanceController {
     private final MaintenanceService maintenanceService;
     private final MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService;
+    private final ElectricalAssetFloorService electricalAssetFloorService;
 
-    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService) {
+    public MaintenanceController(MaintenanceService maintenanceService, MaintenanceTaskStaffAssignmentService maintenanceTaskStaffAssignmentService, ElectricalAssetFloorService electricalAssetFloorService) {
         this.maintenanceService = maintenanceService;
         this.maintenanceTaskStaffAssignmentService = maintenanceTaskStaffAssignmentService;
+        this.electricalAssetFloorService = electricalAssetFloorService;
     }
 
     @GetMapping("/maintenanceTasks")
@@ -62,7 +66,13 @@ public class MaintenanceController {
 
     @GetMapping("/electricalAssets/new")
     public String newElectricalAsset(Model model){
-        model.addAttribute("electricalAsset", new ElectricalAsset("", "", ElectricalAssetType.LIFT, ElectricalAssetStatus.WORKING));
+        String newId = maintenanceService.getElectricalAssetNewId();
+        List<String> electricalAssetsIds = this.maintenanceService.getElectricalAssetAllIds();
+        List<String> floorIds = this.electricalAssetFloorService.getAllFloorIds();
+        electricalAssetsIds.add(0, newId);
+        model.addAttribute("electricalAsset", new ElectricalAsset("", "", ElectricalAssetType.AC, ElectricalAssetStatus.WORKING));
+        model.addAttribute("electricalAssetsIds", electricalAssetsIds);
+        model.addAttribute("floorIds", floorIds);
         return "ElectricalAsset/form";
     }
 
@@ -73,8 +83,12 @@ public class MaintenanceController {
     }
 
     @PostMapping("/electricalAssets/{id}/delete")
-    public String deleteElectricalAsset(@PathVariable String id){
-        maintenanceService.deleteElectricalAsset(id);
+    public String deleteElectricalAsset(@PathVariable String id, RedirectAttributes redirectAttributes){
+        try{
+            maintenanceService.deleteElectricalAsset(id);
+        } catch(RuntimeException e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+        }
         return "redirect:/maintenance/electricalAssets";
     }
 }
