@@ -26,7 +26,7 @@ public class MaintenanceController {
     public String getAllMaintenanceTasks(Model model) {
         List<MaintenanceTask> maintenanceTasks = this.maintenanceService.findAllMaintenanceTask();
         model.addAttribute("maintenanceTasks", maintenanceTasks);
-        return "MaintenanceTask/index";
+        return "maintenanceTask/index";
     }
 
     @GetMapping("/maintenanceTasks/new")
@@ -38,7 +38,7 @@ public class MaintenanceController {
         model.addAttribute("maintenanceTask", new MaintenanceTask("", "", "", MaintenanceTaskStatus.ACTIVE, ""));
         model.addAttribute("maintenanceTaskIds", maintenanceTaskIds);
         model.addAttribute("staffAssignmentsIds", staffAssignmentsIds);
-        return "MaintenanceTask/form";
+        return "maintenanceTask/form";
     }
 
     @PostMapping("/maintenanceTasks")
@@ -57,13 +57,13 @@ public class MaintenanceController {
     public String getAllElectricalAssets(Model model) {
         List<ElectricalAsset> electricalAssets = this.maintenanceService.findAllElectricalAsset();
         model.addAttribute("electricalAssets", electricalAssets);
-        return "ElectricalAsset/index";
+        return "electricalAsset/index";
     }
 
     @GetMapping("/electricalAssets/new")
     public String newElectricalAsset(Model model){
         model.addAttribute("electricalAsset", new ElectricalAsset("", "", ElectricalAssetType.LIFT, ElectricalAssetStatus.WORKING));
-        return "ElectricalAsset/form";
+        return "electricalAsset/form";
     }
 
     @PostMapping("/electricalAssets")

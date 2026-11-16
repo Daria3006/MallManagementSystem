@@ -56,7 +56,7 @@
         </select>
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit" th:disabled="${#lists.isEmpty(shopIds) or #lists.isEmpty(customerIds)}">Submit</button>
     <a th:href="@{/sales/purchases}">Cancel</a>
 </form>
 </body>

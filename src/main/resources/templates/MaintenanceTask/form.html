@@ -46,7 +46,20 @@
         No StaffAssignment available. You cannot create this object.
     </div>
 
-    <button type="submit" th:disabled="${#lists.isEmpty(staffAssignmentsIds)}">Save MaintenanceTasks</button>
+    <div class="form-group">
+        <label for="floorId">Floor ID:</label>
+        <select id="floorId" th:field="*{floorId}" required>
+            <option th:unless="${#lists.isEmpty(floorIds)}" th:each="floorId : ${floorIds}" th:value="${floorId}" th:text="${floorId}"></option>
+        </select>
+    </div>
+
+
+
+    <div th:if="${#lists.isEmpty(floorIds)}" class="text-danger">
+        No Floor available. You cannot create this object.
+    </div>
+
+    <button type="submit" th:disabled="${#lists.isEmpty(staffAssignmentsIds) or #lists.isEmpty(floorIds)}">Submit</button>
     <a th:href="@{/maintenance/maintenanceTasks}">Cancel</a>
 </form>
 </body>
