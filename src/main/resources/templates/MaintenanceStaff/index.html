@@ -50,7 +50,7 @@
         <td th:text="${maintenanceStaff.name}">Name</td>
         <td th:text="${maintenanceStaff.type}">Type</td>
         <td>
-            <ul class="compact-list" th:each="staffAssignment : ${staffAssignments}">
+            <ul class="compact-list" th:each="staffAssignment : ${maintenanceStaff.assignments}">
                 <li th:text="${staffAssignment.id}"></li>
             </ul>
         </td>

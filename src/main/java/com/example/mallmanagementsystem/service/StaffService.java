@@ -99,8 +99,17 @@ public class StaffService {
         return false;
     }
 
-
     public StaffAssignment saveStaffAssignment(StaffAssignment staffAssignment) {
+        for (MaintenanceStaff staff : maintenanceStaffRepository.findAll()) {
+            if (staff.getAssignments() != null &&
+                    staff.getAssignments().removeIf(a -> a.getId().equals(staffAssignment.getId()))) {
+                maintenanceStaffRepository.delete(staff.getId());
+                maintenanceStaffRepository.save(staff);
+            }
+        }
+        if (staffAssignmentRepository.findById(staffAssignment.getId()) != null) {
+            staffAssignmentRepository.delete(staffAssignment.getId());
+        }
         this.addStaffAssignmentToMaintenanceStaff(staffAssignment);
         return staffAssignmentRepository.save(staffAssignment);
     }
@@ -130,14 +139,17 @@ public class StaffService {
     }
 
     public void addStaffAssignmentToMaintenanceStaff(StaffAssignment staffAssignment) {
-        String staffId = staffAssignment.getStaffId();
-        MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffId);
+        MaintenanceStaff maintenanceStaff = this.findMaintenanceStaffById(staffAssignment.getStaffId());
         if (maintenanceStaff != null) {
-            if (maintenanceStaff.getAssignments() == null ){
+            if (maintenanceStaff.getAssignments() == null) {
                 maintenanceStaff.setAssignments(new ArrayList<>());
             }
+            maintenanceStaff.getAssignments().removeIf(p -> p.getId().equals(staffAssignment.getId()));
             maintenanceStaff.addAssignment(staffAssignment);
+
+            maintenanceStaffRepository.delete(maintenanceStaff.getId());
             maintenanceStaffRepository.save(maintenanceStaff);
         }
     }
+
 }

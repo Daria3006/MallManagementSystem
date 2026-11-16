@@ -55,9 +55,7 @@ public class StaffController {
     @GetMapping("/maintenanceStaff")
     public String getAllMaintenanceStaff(Model model) {
         List<MaintenanceStaff> maintenanceStaff = this.staffService.findAllMaintenanceStaff();
-        List<StaffAssignment> staffAssignments = this.staffService.findAllStaffAssignment();
         model.addAttribute("maintenanceStaff", maintenanceStaff);
-        model.addAttribute("staffAssignments", staffAssignments);
         return "MaintenanceStaff/index";
     }
 
