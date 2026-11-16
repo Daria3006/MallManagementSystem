@@ -42,6 +42,10 @@
         </select>
     </div>
 
+    <div th:if="${#lists.isEmpty(staffAssignmentsIds)}" class="text-danger">
+        No StaffAssignment available. You cannot create this object.
+    </div>
+
     <div class="form-group">
         <label for="floorId">Floor ID:</label>
         <select id="floorId" th:field="*{floorId}" required>
@@ -49,11 +53,9 @@
         </select>
     </div>
 
-    <div th:if="${#lists.isEmpty(staffAssignmentsIds)}" class="text-danger">
-        No StaffAssignment available. You cannot create this object.
-    </div>
 
-    <div th:if="${#lists.isEmpty(floorIds)}" class="text-danger" style="color: #D8000C; margin-bottom: 15px;">
+
+    <div th:if="${#lists.isEmpty(floorIds)}" class="text-danger">
         No Floor available. You cannot create this object.
     </div>
 
