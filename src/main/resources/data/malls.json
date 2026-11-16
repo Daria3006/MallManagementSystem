@@ -1,22 +1,8 @@
 [ {
-  "id" : "2",
-  "name" : "Iulius Mall",
-  "city" : "Cluj-Napoca",
+  "id" : "7",
+  "name" : "Palas Mall",
+  "city" : "Iasi",
   "floors" : [ {
-    "id" : "5",
-    "number" : 5,
-    "shops" : [ ],
-    "tasks" : [ ],
-    "electricals" : [ ],
-    "assignments" : null
-  }, {
-    "id" : "6",
-    "number" : 6,
-    "shops" : [ ],
-    "tasks" : [ ],
-    "electricals" : [ ],
-    "assignments" : null
-  }, {
     "id" : "7",
     "number" : 7,
     "shops" : [ ],
@@ -24,6 +10,32 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "2",
+    "number" : 2,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "2",
+      "description" : "Clean and sanitize public restroom facilities near food court",
+      "floorId" : "2",
+      "status" : "ACTIVE",
+      "assignmentId" : "2"
+    }, {
+      "id" : "3",
+      "description" : "Inspect main electrical breaker panel and test backup circuits",
+      "floorId" : "2",
+      "status" : "PLANNED",
+      "assignmentId" : "3"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Palas",
+  "number" : 7
+}, {
+  "id" : "8",
+  "name" : "Shopping City",
+  "city" : "Timisoara",
+  "floors" : [ {
     "id" : "8",
     "number" : 8,
     "shops" : [ ],
@@ -31,13 +43,83 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "2",
+    "number" : 2,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "2",
+      "description" : "Clean and sanitize public restroom facilities near food court",
+      "floorId" : "2",
+      "status" : "ACTIVE",
+      "assignmentId" : "2"
+    }, {
+      "id" : "3",
+      "description" : "Inspect main electrical breaker panel and test backup circuits",
+      "floorId" : "2",
+      "status" : "PLANNED",
+      "assignmentId" : "3"
+    }, {
+      "id" : "4",
+      "description" : "Deep clean escalator handrails and glass balustrades",
+      "floorId" : "2",
+      "status" : "DONE",
+      "assignmentId" : "4"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Sagului",
+  "number" : 100
+}, {
+  "id" : "9",
+  "name" : "City Park",
+  "city" : "Constanta",
+  "floors" : [ {
     "id" : "9",
-    "number" : 9,
+    "number" : 8,
     "shops" : [ ],
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "2",
+    "number" : 2,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "2",
+      "description" : "Clean and sanitize public restroom facilities near food court",
+      "floorId" : "2",
+      "status" : "ACTIVE",
+      "assignmentId" : "2"
+    }, {
+      "id" : "3",
+      "description" : "Inspect main electrical breaker panel and test backup circuits",
+      "floorId" : "2",
+      "status" : "PLANNED",
+      "assignmentId" : "3"
+    }, {
+      "id" : "4",
+      "description" : "Deep clean escalator handrails and glass balustrades",
+      "floorId" : "2",
+      "status" : "DONE",
+      "assignmentId" : "4"
+    }, {
+      "id" : "5",
+      "description" : "Repair faulty automatic sliding door sensor at north entrance",
+      "floorId" : "2",
+      "status" : "ACTIVE",
+      "assignmentId" : "5"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Alexandru Lapusneanu",
+  "number" : 116
+}, {
+  "id" : "10",
+  "name" : "Lotus Center",
+  "city" : "Oradea",
+  "floors" : [ {
     "id" : "10",
     "number" : 10,
     "shops" : [ ],
@@ -45,6 +127,38 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "2",
+    "number" : 2,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "3",
+      "description" : "Inspect main electrical breaker panel and test backup circuits",
+      "floorId" : "2",
+      "status" : "PLANNED",
+      "assignmentId" : "3"
+    }, {
+      "id" : "4",
+      "description" : "Deep clean escalator handrails and glass balustrades",
+      "floorId" : "2",
+      "status" : "DONE",
+      "assignmentId" : "4"
+    }, {
+      "id" : "5",
+      "description" : "Repair faulty automatic sliding door sensor at north entrance",
+      "floorId" : "2",
+      "status" : "ACTIVE",
+      "assignmentId" : "5"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Alexandru Vaida Voevod",
+  "number" : 53
+}, {
+  "id" : "2",
+  "name" : "Vivo!",
+  "city" : "Cluj-Napoca",
+  "floors" : [ {
     "id" : "2",
     "number" : 2,
     "shops" : [ {
@@ -79,6 +193,32 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "1",
+    "number" : 1,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "1",
+      "description" : "Replace flickering LED ceiling lights in main corridor",
+      "floorId" : "1",
+      "status" : "ACTIVE",
+      "assignmentId" : "1"
+    }, {
+      "id" : "2",
+      "description" : "Clean and sanitize public restroom facilities near food court",
+      "floorId" : "1",
+      "status" : "ACTIVE",
+      "assignmentId" : "2"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Calea Manastur",
+  "number" : 2
+}, {
+  "id" : "4",
+  "name" : "Mega Mall",
+  "city" : "Bucharest",
+  "floors" : [ {
     "id" : "4",
     "number" : 4,
     "shops" : [ {
@@ -105,6 +245,26 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "3",
+    "number" : 3,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "6",
+      "description" : "Polish marble flooring in central atrium",
+      "floorId" : "3",
+      "status" : "DONE",
+      "assignmentId" : "6"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Pierre de Coubertin",
+  "number" : 3
+}, {
+  "id" : "5",
+  "name" : "AFI Cotroceni",
+  "city" : "Bucharest",
+  "floors" : [ {
     "id" : "1",
     "number" : 1,
     "shops" : [ {
@@ -170,6 +330,26 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
+    "id" : "4",
+    "number" : 4,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "7",
+      "description" : "Check emergency exit lighting batteries and replace dead units",
+      "floorId" : "4",
+      "status" : "PLANNED",
+      "assignmentId" : "7"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Avram Iancu",
+  "number" : 492
+}, {
+  "id" : "3",
+  "name" : "Platinia",
+  "city" : "Cluj-Napoca",
+  "floors" : [ {
     "id" : "3",
     "number" : 3,
     "shops" : [ {
@@ -202,7 +382,106 @@
     "tasks" : [ ],
     "electricals" : [ ],
     "assignments" : null
+  }, {
+    "id" : "4",
+    "number" : 4,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "7",
+      "description" : "Check emergency exit lighting batteries and replace dead units",
+      "floorId" : "4",
+      "status" : "PLANNED",
+      "assignmentId" : "7"
+    }, {
+      "id" : "8",
+      "description" : "Sanitize seating area and waste bins in dining zone",
+      "floorId" : "4",
+      "status" : "ACTIVE",
+      "assignmentId" : "8"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
   } ],
-  "street" : "Alexandru Vaida Voevod",
-  "number" : 53
+  "street" : "Nufarului",
+  "number" : 30
+}, {
+  "id" : "M1",
+  "name" : "Iulius Mall",
+  "city" : "Cluj Napoca",
+  "floors" : [ {
+    "id" : "5",
+    "number" : 5,
+    "shops" : [ ],
+    "tasks" : [ ],
+    "electricals" : [ ],
+    "assignments" : null
+  }, {
+    "id" : "1",
+    "number" : 1,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "1",
+      "description" : "Replace flickering LED ceiling lights in main corridor",
+      "floorId" : "1",
+      "status" : "ACTIVE",
+      "assignmentId" : "1"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  }, {
+    "id" : "7",
+    "number" : 7,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "9",
+      "description" : "Troubleshoot power outlet failure in retail wing B",
+      "floorId" : "7",
+      "status" : "PLANNED",
+      "assignmentId" : "9"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Vasile Milea",
+  "number" : 4
+}, {
+  "id" : "6",
+  "name" : "Promenada",
+  "city" : "Bucharest",
+  "floors" : [ {
+    "id" : "6",
+    "number" : 6,
+    "shops" : [ ],
+    "tasks" : [ ],
+    "electricals" : [ ],
+    "assignments" : null
+  }, {
+    "id" : "2",
+    "number" : 2,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "2",
+      "description" : "Clean and sanitize public restroom facilities near food court",
+      "floorId" : "2",
+      "status" : "ACTIVE",
+      "assignmentId" : "2"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  }, {
+    "id" : "10",
+    "number" : 10,
+    "shops" : [ ],
+    "tasks" : [ {
+      "id" : "10",
+      "description" : "Sweep and mop service hallways and loading dock area",
+      "floorId" : "10",
+      "status" : "ACTIVE",
+      "assignmentId" : "10"
+    } ],
+    "electricals" : [ ],
+    "assignments" : null
+  } ],
+  "street" : "Calea Floreasca",
+  "number" : 246
 } ]
