@@ -27,13 +27,13 @@ public class StaffController {
     public String getAllSecurityStaff(Model model) {
         List<SecurityStaff> securityStaff = this.staffService.findAllSecurityStaff();
         model.addAttribute("securityStaff", securityStaff);
-        return "securityStaff/index";
+        return "SecurityStaff/index";
     }
 
     @GetMapping("/securityStaff/new")
     public String newSecurityStaff(Model model){
         model.addAttribute("securityStaff", new SecurityStaff("", "", ""));
-        return "securityStaff/form";
+        return "SecurityStaff/form";
     }
 
     @PostMapping("/securityStaff")
@@ -54,7 +54,7 @@ public class StaffController {
         List<StaffAssignment> staffAssignments = this.staffService.findAllStaffAssignment();
         model.addAttribute("maintenanceStaff", maintenanceStaff);
         model.addAttribute("staffAssignments", staffAssignments);
-        return "maintenanceStaff/index";
+        return "MaintenanceStaff/index";
     }
 
     @GetMapping("/maintenanceStaff/new")
@@ -64,7 +64,7 @@ public class StaffController {
         maintenanceStaffIds.add(0, newId);
         model.addAttribute("maintenanceStaff", new MaintenanceStaff("", "", new ArrayList<>(),  MaintenanceStaffType.CLEANING));
         model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
-        return "maintenanceStaff/form";
+        return "MaintenanceStaff/form";
     }
 
     @PostMapping("/maintenanceStaff")
@@ -88,7 +88,7 @@ public class StaffController {
     public String getAllStaffAssignments(Model model) {
         List<StaffAssignment> staffAssignments = this.staffService.findAllStaffAssignment();
         model.addAttribute("staffAssignments", staffAssignments);
-        return "staffAssignment/index";
+        return "StaffAssignment/index";
     }
 
     @GetMapping("/staffAssignments/new")
@@ -102,7 +102,7 @@ public class StaffController {
         model.addAttribute("staffAssignmentsIds", staffAssignmentIds);
         model.addAttribute("maintenanceStaffIds", maintenanceStaffIds);
 
-        return "staffAssignment/form";
+        return "StaffAssignment/form";
     }
 
     @PostMapping("/staffAssignments")
