@@ -78,8 +78,13 @@ public class StructureController {
     }
 
     @PostMapping("/floors/{id}/delete")
-    public String deleteFloor(@PathVariable String id) {
-        structureService.deleteFloor(id);
+    public String deleteFloor(@PathVariable String id, RedirectAttributes redirectAttributes) {
+        try {
+            structureService.deleteFloor(id);
+        }catch (RuntimeException e){
+            redirectAttributes.addFlashAttribute("errorMessage", e.getMessage());
+            return "redirect:/structure/floors";
+        }
         return "redirect:/structure/floors";
     }
 }

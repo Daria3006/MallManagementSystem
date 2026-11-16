@@ -54,6 +54,7 @@
         <th>Name</th>
         <th>Owner Name</th>
         <th>Area</th>
+        <th>Floor ID</th>
         <th>Actions</th>
     </tr>
     </thead>
@@ -63,6 +64,7 @@
         <td th:text="${shop.name}">Name</td>
         <td th:text="${shop.ownerName}">Owner Name</td>
         <td th:text="${shop.areaSqm}">Area</td>
+        <td th:text="${shop.floorId}">Floor ID</td>
         <td>
             <form th:action="@{'/sales/shops/'+${shop.id}+'/delete'}" method="post" style="margin: 0;">
                 <button type="submit">Delete</button>
@@ -70,7 +72,7 @@
         </td>
     </tr>
     <tr th:if="${#lists.isEmpty(shops)}">
-        <td colspan="5" style="text-align: center;">No Shops found.</td>
+        <td colspan="6" style="text-align: center;">No Shops found.</td>
     </tr>
     </tbody>
 </table>

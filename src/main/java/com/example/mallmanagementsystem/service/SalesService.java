@@ -62,25 +62,8 @@ public class SalesService {
     public Purchase savePurchase(Purchase purchase){
         Purchase saved = purchaseRepository.save(purchase);
 
-        Customer customer = customerRepository.findById(purchase.getCustomerId());
-        if (customer != null) {
-            if(customer.getPurchases()==null){
-                customer.setPurchases(new ArrayList<>());
-            }
-            customer.getPurchases().removeIf(p->p.getId().equals(saved.getId()));
-            customer.getPurchases().add(saved);
-            customerRepository.save(customer);
-        }
-
-        Shop shop = shopRepository.findById(purchase.getShopId());
-        if (shop != null) {
-            if(shop.getPurchases()==null){
-                shop.setPurchases(new ArrayList<>());
-            }
-            shop.getPurchases().removeIf(p->p.getId().equals(saved.getId()));
-            shop.getPurchases().add(saved);
-            shopRepository.save(shop);
-        }
+        addPurchaseToCustomer(saved);
+        addPurchaseToShop(saved);
 
         return saved;
     }
@@ -103,17 +86,8 @@ public class SalesService {
             throw new RuntimeException("Cannot delete: Purchase with ID " + id + " not found.");
         }
 
-        Customer customer = customerRepository.findById(purchase.getCustomerId());
-        if (customer != null && customer.getPurchases() != null) {
-            customer.getPurchases().removeIf(p -> p.getId().equals(id));
-            customerRepository.save(customer);
-        }
-
-        Shop shop = shopRepository.findById(purchase.getShopId());
-        if (shop != null && shop.getPurchases() != null) {
-            shop.getPurchases().removeIf(p -> p.getId().equals(id));
-            shopRepository.save(shop);
-        }
+        deletePurchaseFromCustomer(purchase);
+        deletePurchaseFromShop(purchase);
 
         purchaseRepository.delete(id);
     }
@@ -188,6 +162,45 @@ public class SalesService {
         }
         return false;
     }
+    
+    public void addPurchaseToCustomer(Purchase purchase){
+        Customer customer = customerRepository.findById(purchase.getCustomerId());
+        if (customer != null) {
+            if(customer.getPurchases()==null){
+                customer.setPurchases(new ArrayList<>());
+            }
+            customer.getPurchases().removeIf(p->p.getId().equals(purchase.getId()));
+            customer.getPurchases().add(purchase);
+            customerRepository.save(customer);
+        }
+    }
+
+    public void addPurchaseToShop(Purchase purchase){
+        Shop shop = shopRepository.findById(purchase.getShopId());
+        if (shop != null) {
+            if(shop.getPurchases()==null){
+                shop.setPurchases(new ArrayList<>());
+            }
+            shop.getPurchases().removeIf(p->p.getId().equals(purchase.getId()));
+            shop.getPurchases().add(purchase);
+            shopRepository.save(shop);
+        }
+    }
+
+    public void deletePurchaseFromCustomer(Purchase purchase){
+        Customer customer = customerRepository.findById(purchase.getCustomerId());
+        if (customer != null && customer.getPurchases() != null) {
+            customer.getPurchases().removeIf(p -> p.getId().equals(purchase.getId()));
+            customerRepository.save(customer);
+        }
+    }
+
+    public void deletePurchaseFromShop(Purchase purchase){
+        Shop shop = shopRepository.findById(purchase.getShopId());
+        if (shop != null && shop.getPurchases() != null) {
+            shop.getPurchases().removeIf(p -> p.getId().equals(purchase.getId()));
+            shopRepository.save(shop);
+        }}
 
 
 }

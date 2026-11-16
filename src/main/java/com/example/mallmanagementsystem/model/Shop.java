@@ -9,11 +9,12 @@ public class Shop {
     private String ownerName;
     private double areaSqm;
     private List<Purchase> purchases = new ArrayList<>();
+    private String floorId;
 
     public Shop() {
     }
 
-    public Shop(String id, List<Purchase> purchases, double areaSqm, String ownerName, String name) {
+    public Shop(String id, List<Purchase> purchases, double areaSqm, String ownerName, String name, String floorId) {
         this.id = id;
         if (purchases != null) {
             this.purchases = purchases;
@@ -21,6 +22,7 @@ public class Shop {
         this.areaSqm = areaSqm;
         this.ownerName = ownerName;
         this.name = name;
+        this.floorId = floorId;
     }
 
     public String getId() {
@@ -74,6 +76,14 @@ public class Shop {
                 ", areaSqm=" + areaSqm +
                 ", purchases=" + purchases +
                 '}';
+    }
+
+    public String getFloorId() {
+        return floorId;
+    }
+
+    public void setFloorId(String floorId) {
+        this.floorId = floorId;
     }
 }
 

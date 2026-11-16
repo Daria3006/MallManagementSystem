@@ -4,6 +4,7 @@ import com.example.mallmanagementsystem.model.Customer;
 import com.example.mallmanagementsystem.model.PaymentMethod;
 import com.example.mallmanagementsystem.model.Purchase;
 import com.example.mallmanagementsystem.model.Shop;
+import com.example.mallmanagementsystem.service.FloorShopService;
 import com.example.mallmanagementsystem.service.SalesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,9 +18,11 @@ import java.util.List;
 @RequestMapping("/sales")
 public class SalesController {
     private final SalesService salesService;
+    private final FloorShopService floorShopService;
 
-    public SalesController(SalesService salesService) {
+    public SalesController(SalesService salesService, FloorShopService floorShopService) {
         this.salesService = salesService;
+        this.floorShopService = floorShopService;
     }
 
     @GetMapping("/shops")
@@ -33,24 +36,26 @@ public class SalesController {
     public String newShop(Model model) {
         String newId=salesService.getShopNewId();
         List<String> shopIds=salesService.getShopAllIds();
+        List<String> floorIds=floorShopService.getAllFloorIds();
         shopIds.add(0,newId);
-        model.addAttribute("shop",new Shop("",new ArrayList<>(),0,"",""));
+        model.addAttribute("shop",new Shop("",new ArrayList<>(),0,"","",""));
         model.addAttribute("shopIds",shopIds);
+        model.addAttribute("floorIds",floorIds);
         return "Shop/form";
     }
 
     @PostMapping("/shops")
     public String createShop(@ModelAttribute Shop shop) {
-        salesService.saveShop(shop);
+        floorShopService.saveShop(shop);
         return "redirect:/sales/shops";
     }
 
     @PostMapping("/shops/{id}/delete")
     public String deleteShop(@PathVariable String id, RedirectAttributes redirectAttributes) {
         try{
-        salesService.deleteShop(id);
+        floorShopService.deleteShop(id);
         }catch(RuntimeException e){
-            redirectAttributes.addFlashAttribute("errorMessage","Cannot delete!");
+            redirectAttributes.addFlashAttribute("errorMessage",e.getMessage());
             return "redirect:/sales/shops";
         }
         return "redirect:/sales/shops";
