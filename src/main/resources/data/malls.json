@@ -45,37 +45,9 @@
     "electricals" : [ ],
     "assignments" : null
   }, {
-    "id" : "3",
-    "number" : 3,
-    "shops" : [ {
-      "id" : "5",
-      "name" : "KFC",
-      "ownerName" : "Yum Brands",
-      "areaSqm" : 85.0,
-      "purchases" : [ ],
-      "floorId" : "3"
-    }, {
-      "id" : "6",
-      "name" : "McDonalds",
-      "ownerName" : "McDonalds Corp",
-      "areaSqm" : 80.0,
-      "purchases" : [ ],
-      "floorId" : "3"
-    } ],
-    "tasks" : [ ],
-    "electricals" : [ ],
-    "assignments" : null
-  }, {
     "id" : "2",
     "number" : 2,
     "shops" : [ {
-      "id" : "3",
-      "name" : "Nike",
-      "ownerName" : "Nike Inc",
-      "areaSqm" : 150.0,
-      "purchases" : [ ],
-      "floorId" : "2"
-    }, {
       "id" : "4",
       "name" : "Adidas",
       "ownerName" : "Adidas AG",
@@ -89,41 +61,19 @@
       "areaSqm" : 200.0,
       "purchases" : [ ],
       "floorId" : "2"
-    } ],
-    "tasks" : [ ],
-    "electricals" : [ ],
-    "assignments" : null
-  }, {
-    "id" : "1",
-    "number" : 1,
-    "shops" : [ {
-      "id" : "1",
-      "name" : "Zara",
-      "ownerName" : "Inditex",
-      "areaSqm" : 250.0,
-      "purchases" : [ ],
-      "floorId" : "1"
     }, {
-      "id" : "2",
-      "name" : "H&M",
-      "ownerName" : "Hennes & Mauritz",
-      "areaSqm" : 300.0,
-      "purchases" : [ ],
-      "floorId" : "1"
-    }, {
-      "id" : "7",
-      "name" : "Sephora",
-      "ownerName" : "LVMH",
-      "areaSqm" : 120.0,
-      "purchases" : [ ],
-      "floorId" : "1"
-    }, {
-      "id" : "9",
-      "name" : "Starbucks",
-      "ownerName" : "Starbucks Corp",
-      "areaSqm" : 60.0,
-      "purchases" : [ ],
-      "floorId" : "1"
+      "id" : "3",
+      "name" : "Nike",
+      "ownerName" : "Nike Inc",
+      "areaSqm" : 150.0,
+      "purchases" : [ {
+        "id" : "3",
+        "customerId" : "3",
+        "shopId" : "3",
+        "amount" : 450.0,
+        "paymentMethod" : "CARD"
+      } ],
+      "floorId" : "2"
     } ],
     "tasks" : [ ],
     "electricals" : [ ],
@@ -136,8 +86,118 @@
       "name" : "Cinema City",
       "ownerName" : "Cineworld",
       "areaSqm" : 800.0,
-      "purchases" : [ ],
+      "purchases" : [ {
+        "id" : "7",
+        "customerId" : "7",
+        "shopId" : "10",
+        "amount" : 4.0,
+        "paymentMethod" : "CARD"
+      }, {
+        "id" : "8",
+        "customerId" : "3",
+        "shopId" : "10",
+        "amount" : 45.0,
+        "paymentMethod" : "CASH"
+      } ],
       "floorId" : "4"
+    } ],
+    "tasks" : [ ],
+    "electricals" : [ ],
+    "assignments" : null
+  }, {
+    "id" : "1",
+    "number" : 1,
+    "shops" : [ {
+      "id" : "2",
+      "name" : "H&M",
+      "ownerName" : "Hennes & Mauritz",
+      "areaSqm" : 300.0,
+      "purchases" : [ {
+        "id" : "2",
+        "customerId" : "2",
+        "shopId" : "2",
+        "amount" : 89.9,
+        "paymentMethod" : "CASH"
+      } ],
+      "floorId" : "1"
+    }, {
+      "id" : "9",
+      "name" : "Starbucks",
+      "ownerName" : "Starbucks Corp",
+      "areaSqm" : 60.0,
+      "purchases" : [ {
+        "id" : "5",
+        "customerId" : "5",
+        "shopId" : "9",
+        "amount" : 25.5,
+        "paymentMethod" : "COUPON"
+      } ],
+      "floorId" : "1"
+    }, {
+      "id" : "7",
+      "name" : "Sephora",
+      "ownerName" : "LVMH",
+      "areaSqm" : 120.0,
+      "purchases" : [ {
+        "id" : "6",
+        "customerId" : "6",
+        "shopId" : "7",
+        "amount" : 210.0,
+        "paymentMethod" : "CARD"
+      } ],
+      "floorId" : "1"
+    }, {
+      "id" : "1",
+      "name" : "Zara",
+      "ownerName" : "Inditex",
+      "areaSqm" : 250.0,
+      "purchases" : [ {
+        "id" : "1",
+        "customerId" : "1",
+        "shopId" : "1",
+        "amount" : 150.0,
+        "paymentMethod" : "CARD"
+      }, {
+        "id" : "9",
+        "customerId" : "9",
+        "shopId" : "1",
+        "amount" : 199.9,
+        "paymentMethod" : "CARD"
+      } ],
+      "floorId" : "1"
+    } ],
+    "tasks" : [ ],
+    "electricals" : [ ],
+    "assignments" : null
+  }, {
+    "id" : "3",
+    "number" : 3,
+    "shops" : [ {
+      "id" : "5",
+      "name" : "KFC",
+      "ownerName" : "Yum Brands",
+      "areaSqm" : 85.0,
+      "purchases" : [ {
+        "id" : "4",
+        "customerId" : "4",
+        "shopId" : "5",
+        "amount" : 35.0,
+        "paymentMethod" : "CASH"
+      } ],
+      "floorId" : "3"
+    }, {
+      "id" : "6",
+      "name" : "McDonalds",
+      "ownerName" : "McDonalds Corp",
+      "areaSqm" : 80.0,
+      "purchases" : [ {
+        "id" : "10",
+        "customerId" : "10",
+        "shopId" : "6",
+        "amount" : 42.0,
+        "paymentMethod" : "CASH"
+      } ],
+      "floorId" : "3"
     } ],
     "tasks" : [ ],
     "electricals" : [ ],

@@ -1,1 +1,61 @@
-[ ]
+[ {
+  "id" : "1",
+  "customerId" : "1",
+  "shopId" : "1",
+  "amount" : 150.0,
+  "paymentMethod" : "CARD"
+}, {
+  "id" : "2",
+  "customerId" : "2",
+  "shopId" : "2",
+  "amount" : 89.9,
+  "paymentMethod" : "CASH"
+}, {
+  "id" : "3",
+  "customerId" : "3",
+  "shopId" : "3",
+  "amount" : 450.0,
+  "paymentMethod" : "CARD"
+}, {
+  "id" : "4",
+  "customerId" : "4",
+  "shopId" : "5",
+  "amount" : 35.0,
+  "paymentMethod" : "CASH"
+}, {
+  "id" : "5",
+  "customerId" : "5",
+  "shopId" : "9",
+  "amount" : 25.5,
+  "paymentMethod" : "COUPON"
+}, {
+  "id" : "6",
+  "customerId" : "6",
+  "shopId" : "7",
+  "amount" : 210.0,
+  "paymentMethod" : "CARD"
+}, {
+  "id" : "7",
+  "customerId" : "7",
+  "shopId" : "10",
+  "amount" : 4.0,
+  "paymentMethod" : "CARD"
+}, {
+  "id" : "8",
+  "customerId" : "3",
+  "shopId" : "10",
+  "amount" : 45.0,
+  "paymentMethod" : "CASH"
+}, {
+  "id" : "9",
+  "customerId" : "9",
+  "shopId" : "1",
+  "amount" : 199.9,
+  "paymentMethod" : "CARD"
+}, {
+  "id" : "10",
+  "customerId" : "10",
+  "shopId" : "6",
+  "amount" : 42.0,
+  "paymentMethod" : "CASH"
+} ]
