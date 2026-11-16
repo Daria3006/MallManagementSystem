@@ -127,6 +127,7 @@ public class StaffService {
     }
 
     public void deleteStaffAssignment(String id){
+        deleteStaffAssignmentFromMaintenanceStaff(findStaffAssignmentById(id));
         staffAssignmentRepository.delete(id);
     }
 
@@ -148,6 +149,14 @@ public class StaffService {
             maintenanceStaff.addAssignment(staffAssignment);
 
             maintenanceStaffRepository.delete(maintenanceStaff.getId());
+            maintenanceStaffRepository.save(maintenanceStaff);
+        }
+    }
+
+    public void deleteStaffAssignmentFromMaintenanceStaff(StaffAssignment staffAssignment){
+        MaintenanceStaff maintenanceStaff = maintenanceStaffRepository.findById(staffAssignment.getStaffId());
+        if (maintenanceStaff != null && maintenanceStaff.getAssignments() != null) {
+            maintenanceStaff.getAssignments().removeIf(p -> p.getId().equals(staffAssignment.getId()));
             maintenanceStaffRepository.save(maintenanceStaff);
         }
     }
