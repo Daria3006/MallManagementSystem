@@ -1,8 +1,7 @@
 package com.example.mallmanagementsystem.service;
 
-import com.example.mallmanagementsystem.model.Floor;
+import com.example.mallmanagementsystem.model.Purchase;
 import com.example.mallmanagementsystem.model.Shop;
-import com.example.mallmanagementsystem.repository.BaseRepository;
 import com.example.mallmanagementsystem.repository.InFileShopRepository;
 import org.springframework.stereotype.Service;
 
@@ -12,12 +11,10 @@ import java.util.List;
 public class FloorShopService {
     private final SalesService salesService;
     private final StructureService structureService;
-    private final InFileShopRepository inFileShopRepository;
 
     public FloorShopService(SalesService salesService, StructureService structureService, InFileShopRepository inFileShopRepository) {
         this.salesService = salesService;
         this.structureService = structureService;
-        this.inFileShopRepository = inFileShopRepository;
     }
 
     public void saveShop(Shop shop) {
@@ -36,5 +33,19 @@ public class FloorShopService {
 
     public List<String> getAllFloorIds() {
         return structureService.getFloorAllIds();
+    }
+
+    public void savePurchase(Purchase purchase){
+        salesService.savePurchase(purchase);
+        Shop updatedShop = salesService.findShopById(purchase.getShopId());
+        structureService.addShopToFloor(updatedShop);
+    }
+
+    public void deletePurchase(String id) {
+        Purchase purchase = salesService.findPurchaseById(id);
+        String shopId = purchase.getShopId();
+        salesService.deletePurchase(id);
+        Shop updatedShop = salesService.findShopById(shopId);
+        structureService.addShopToFloor(updatedShop);
     }
 }
